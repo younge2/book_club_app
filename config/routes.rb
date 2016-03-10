@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  root 'main#index'
+
+  get 'auth/:provider/callback' => 'auth#callback'
+  get 'auth/logout' => 'auth#logout'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
