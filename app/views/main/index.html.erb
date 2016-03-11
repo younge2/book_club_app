@@ -1,8 +1,21 @@
-<h1>Home</h1>
 
-<%= link_to "Login with Facebook", "/auth/facebook", class: "btn btn-primary" %>
-<%= link_to "Logout", auth_logout_path, class: "btn btn-warning" %>
-<div class="well">
-  Current User:
-  <%= @current_user.inspect %>
+
+<div class="parallax">
+  <div class="parallax__layer parallax__layer--back">
+    <img width=100% src="https://img.buzzfeed.com/buzzfeed-static/static/2015-02/23/14/enhanced/webdr08/enhanced-buzz-wide-26665-1424720434-11.jpg?no-auto">  
+  </div>
+  <div class="parallax__layer parallax__layer--base">
+	  <div class="jumbotron">  
+		  <div class="container">  
+		    <h1>ReadMe</h1>
+				<%= link_to "Login with Facebook", "/auth/facebook", class: "btn btn-primary" %>
+				<%= link_to "Logout", auth_logout_path, class: "btn btn-warning" %>
+				<div class="well">
+				  Current User:
+				  <%= @current_user.name %>			
+				</div>
+			</div>
+		</div>	
+  </div>
 </div>
+
