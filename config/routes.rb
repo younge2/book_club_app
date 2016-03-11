@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get 'auth/:provider/callback' => 'auth#callback'
   get 'auth/logout' => 'auth#logout'
+  get 'books/show'  => 'books#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

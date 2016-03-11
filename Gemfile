@@ -28,6 +28,8 @@ gem 'omniauth-facebook'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'autoprefixer-rails'
 gem 'bootstrap_form'
+gem 'httparty'
+gem 'json'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
