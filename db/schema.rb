@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160310224606) do
+ActiveRecord::Schema.define(version: 20160311003837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 20160310224606) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "books_clubs", force: :cascade do |t|
+    t.integer  "book_id"
+    t.integer  "club_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "books_clubs", ["book_id"], name: "index_books_clubs_on_book_id", using: :btree
+  add_index "books_clubs", ["club_id"], name: "index_books_clubs_on_club_id", using: :btree
 
   create_table "books_users", force: :cascade do |t|
     t.string   "category"
@@ -49,6 +59,38 @@ ActiveRecord::Schema.define(version: 20160310224606) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "clubs_users", force: :cascade do |t|
+    t.integer  "club_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "clubs_users", ["club_id"], name: "index_clubs_users_on_club_id", using: :btree
+  add_index "clubs_users", ["user_id"], name: "index_clubs_users_on_user_id", using: :btree
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "author"
+    t.integer  "topic_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["topic_id"], name: "index_comments_on_topic_id", using: :btree
+
+  create_table "topics", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "author"
+    t.integer  "book_id"
+    t.integer  "club_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "topics", ["book_id"], name: "index_topics_on_book_id", using: :btree
+  add_index "topics", ["club_id"], name: "index_topics_on_club_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -62,6 +104,13 @@ ActiveRecord::Schema.define(version: 20160310224606) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "books_clubs", "books"
+  add_foreign_key "books_clubs", "clubs"
   add_foreign_key "books_users", "books"
   add_foreign_key "books_users", "users"
+  add_foreign_key "clubs_users", "clubs"
+  add_foreign_key "clubs_users", "users"
+  add_foreign_key "comments", "topics"
+  add_foreign_key "topics", "books"
+  add_foreign_key "topics", "clubs"
 end
