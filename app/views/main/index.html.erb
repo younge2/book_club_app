@@ -1,24 +1,38 @@
 <div class="parallax">
-  <div class="parallax__layer parallax__layer--back">
-    <img width=100% src="https://img.buzzfeed.com/buzzfeed-static/static/2015-02/23/14/enhanced/webdr08/enhanced-buzz-wide-26665-1424720434-11.jpg?no-auto">  
+  <div id="group1" class="parallax__group">  
+    <div class="parallax__layer parallax__layer--base">
+      <img width=100% src="https://img.buzzfeed.com/buzzfeed-static/static/2015-02/23/14/enhanced/webdr08/enhanced-buzz-wide-26665-1424720434-11.jpg?no-auto">  
+    </div>
+    <div class="parallax__layer parallax__layer--fore">
+      <div class="jumbotron heading">  
+        <div class="container">  
+          <h1>ReadMe</h1>
+          <%=link_to "Login", login_path, class: "btn btn-success" %>
+          <%=link_to "Sign Up", signup_path, class: "btn btn-danger" %>
+          <%= link_to "Login with Facebook", "/auth/facebook", class: "btn btn-primary" %>
+          <%= link_to "Logout", auth_logout_path, class: "btn btn-warning" %>
+          
+          <% if @current_user %>
+          <div class="well"> 
+              Current User:
+              <%= @current_user.name %>     
+            <% end %>
+          </div>
+        </div>
+      </div>  
+    </div>
   </div>
-  <div class="parallax__layer parallax__layer--base">
-	  <div class="jumbotron">  
-		  <div class="container">  
-		    <h1>ReadMe</h1>
-        <%=link_to "Login", login_path, class: "btn btn-success" %>
-        <%=link_to "Sign Up", signup_path, class: "btn btn-danger" %>
-				<%= link_to "Login with Facebook", "/auth/facebook", class: "btn btn-primary" %>
-				<%= link_to "Logout", auth_logout_path, class: "btn btn-warning" %>
-				
-				<% if @current_user %>
-				<div class="well"> 
-				  	Current User:
-				  	<%= @current_user.name %>			
-				  <% end %>
-				</div>
-			</div>
-		</div>	
+<!--  <div> -->
+  <div id="group2" class="parallax__group">
+    <div class="parallax__layer parallax__layer--back">
+      <img width=100% src="https://img.buzzfeed.com/buzzfeed-static/static/2015-02/24/17/enhanced/webdr08/enhanced-buzz-wide-16669-1424818241-53.jpg?no-auto">
+    </div>
+    <div class="parallax__layer parallax__layer--fore">
+      <div class="well heading2"> 
+        <h1>About ReadMe</h1>
+        <p>Readme is a place enthusiastic readers can go to find books, form groups, and discuss in a bookclub format!</p>
+      </div>  
+    </div>
   </div>
 </div>
 

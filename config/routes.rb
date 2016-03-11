@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'auth/logout' => 'auth#logout'
   
   #Local authentication routes
+  get 'signup' => 'users#new', :as => 'users'
+  post 'signup' => 'users#create'
   get "login" => "sessions#new"
   post "login" => "sessions#create"
   delete "logout" => "sessions#destroy"
