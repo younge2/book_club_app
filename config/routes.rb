@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'clubs/show'
+
+  get 'clubs/create'
+
+  get 'clubs/edit'
+
   root 'main#index'
 
   get 'auth/:provider/callback' => 'auth#callback'
