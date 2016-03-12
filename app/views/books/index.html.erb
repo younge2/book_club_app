@@ -1,0 +1,13 @@
+<h1>Books</h1>
+
+<%= @query %>
+<%= @responses["items"][1]["volumeInfo"]["imageLinks"]["thumbnail"] %>
+<p><img src="<%= @responses["items"][1]["volumeInfo"]["imageLinks"]["thumbnail"]%>"></p>
+
+<% @responses["items"].each do |response| %>
+<%= response["volumeInfo"]["imageLinks"] %>
+<%= response["volumeInfo"].key?("imageLinks") %>
+<p>+++++</p>
+
+<% end %>
+
