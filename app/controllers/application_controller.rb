@@ -5,6 +5,14 @@ class ApplicationController < ActionController::Base
 
   before_action :current_user
 
+ 	def is_authenticated?
+  	unless session[:user_id]
+  		
+  		redirect_to login_path
+  	end
+  end
+
+
   def current_user
     @current_user ||= User.find_by_id(session[:user_id])
   end
