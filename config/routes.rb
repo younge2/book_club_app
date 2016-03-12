@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  get 'users/new'
+  
 
   get 'clubs/show'
 
@@ -10,7 +10,10 @@ Rails.application.routes.draw do
   get 'clubs/edit'
 
 
+
+  #Main routes
   root 'main#index'
+  get 'about' => 'main#about'
 
   #Facebook authenication routes
   get 'auth/:provider/callback' => 'auth#callback'
