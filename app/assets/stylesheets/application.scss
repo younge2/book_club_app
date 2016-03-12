@@ -28,9 +28,6 @@ $jumbotron-heading-font-size: 70px;
   overflow: hidden;
 }*/
 
-.parallax {
-  perspective: 300px;
-=======
 * {
   margin:0;
   padding:0;
@@ -71,10 +68,10 @@ $jumbotron-heading-font-size: 70px;
   transform: translateZ(-2px) scale(3);
 }*/
 .heading {
-	margin-top: 100px;
+  margin-top: 100px;
 }
 .heading2 {
-	margin-top: 100px;
+  margin-top: 100px;
 }
 
 #group1 {
@@ -139,3 +136,4 @@ $jumbotron-heading-font-size: 70px;
   transform: translateZ(-600px) scale(3);
   z-index: 2;
 }
+
