@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def profile
-    id = :user_id
+    @user = User.find(params[:id])
   end
 
   private
