@@ -1,16 +1,31 @@
 Rails.application.routes.draw do
 
+
+  get 'users/new'
+
   get 'clubs/show'
 
   get 'clubs/create'
 
   get 'clubs/edit'
 
+
   root 'main#index'
 
+  #Facebook authenication routes
   get 'auth/:provider/callback' => 'auth#callback'
   get 'auth/logout' => 'auth#logout'
+
+  
+  #Local authentication routes
+  get 'signup' => 'users#new', :as => 'users'
+  post 'signup' => 'users#create'
+  get "login" => "sessions#new"
+  post "login" => "sessions#create"
+  delete "logout" => "sessions#destroy"
+
   get 'books/show'  => 'books#show'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
