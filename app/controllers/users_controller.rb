@@ -10,7 +10,8 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  def show
+  def profile
+    id = :user_id
   end
 
   private
