@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
-
-  get 'clubs/show'
-
-  get 'clubs/create'
-
-  get 'clubs/edit'
-
   root 'main#index'
 
   get 'auth/:provider/callback' => 'auth#callback'
   get 'auth/logout' => 'auth#logout'
   get 'books/show'  => 'books#show'
+
+  resources :clubs
+  # get 'clubs' => 'clubs#index'
+  # get 'clubs/edit' =>'clubs#edit'
+  # get 'clubs/new' => 'clubs#new'
+  # get 'clubs/show' => 'clubs#show'
+  # post 'clubs' => 'clubs#create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
