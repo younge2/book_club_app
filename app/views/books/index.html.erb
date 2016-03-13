@@ -1,0 +1,9 @@
+<h1>Books</h1>
+
+<% @responses["items"].each do |response| %>
+  <% if response["volumeInfo"].key?("imageLinks") %>
+    <p><img src="<%= response["volumeInfo"]["imageLinks"]["thumbnail"]%>"></p>
+  <% else %>
+  <% end %>
+<% end %>
+

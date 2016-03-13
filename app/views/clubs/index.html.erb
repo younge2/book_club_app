@@ -1,0 +1,9 @@
+<h1>BookClubs</h1>
+<% @clubs.each do |club| %>
+	
+	<h3><%= link_to club.name, club:club.id %></h3>
+	<p><%= club.blurb %></p>
+
+	<button class="btn btn-info"><%= link_to 'Delete', club, method: :delete %></button>
+
+<% end %>
