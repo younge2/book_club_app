@@ -17,7 +17,8 @@ Rails.application.routes.draw do
   delete "logout" => "sessions#destroy"
 
   #User profiles
-  get 'users/profile/:id' => 'users#profile' 
+  get 'users/profile/:id' => 'users#profile'
+  get 'users/edit' => 'users#edit' 
 
   get 'books/show'  => 'books#show'
 

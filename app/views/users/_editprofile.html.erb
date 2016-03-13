@@ -1,0 +1,8 @@
+<%= bootstrap_form_for @user do |f| %>
+
+    <%= f.text_field :email, icon: "pencil" %>
+    <%= f.text_field :name, icon: "pencil" %>
+    <%= f.text_area :bio, icon: "pencil" %>
+
+    <%= f.submit %>
+<% end %>

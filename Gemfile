@@ -30,6 +30,7 @@ gem 'autoprefixer-rails'
 gem 'bootstrap_form'
 gem 'httparty'
 gem 'json'
+gem 'cloudinary'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'

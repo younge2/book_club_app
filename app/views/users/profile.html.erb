@@ -1,7 +1,12 @@
 <h1 class="profile-centered"><%= @user.name %></h1>
 <p class="lead profile-centered"><%= @user.bio %></p>
 
-<button class="btn btn-danger"><%= link_to 'Delete Account', user, method: :delete %></button>
+<%= bootstrap_form_for @photo do |f| %>  
+  <%= f.file_field :picture %>
+  <%= f.submit %>
+<% end %>
+
+
 
 <!--
 Page will display user's
