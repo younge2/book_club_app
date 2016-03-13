@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get 'books/show'  => 'books#show'
 
   resources :clubs
+  get 'clubs/:id' => 'clubs#show'
   # get 'clubs' => 'clubs#index'
   # get 'clubs/edit' =>'clubs#edit'
   # get 'clubs/new' => 'clubs#new'
