@@ -16,7 +16,14 @@ Rails.application.routes.draw do
   post "login" => "sessions#create"
   delete "logout" => "sessions#destroy"
 
+
   get 'books/:id'  => 'books#show'
+
+
+  #User profiles
+  get 'users/profile/:id' => 'users#profile' 
+
+  get 'books/show'  => 'books#show'
 
 
   resources :clubs
