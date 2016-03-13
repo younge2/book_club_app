@@ -2,7 +2,7 @@
 
 <% @responses["items"].each do |response| %>
   <% if response["volumeInfo"].key?("imageLinks") %>
-    <p><img src="<%= response["volumeInfo"]["imageLinks"]["thumbnail"]%>"></p>
+    <p><a href="/books/<%= response["id"] %>"><img src="<%= response["volumeInfo"]["imageLinks"]["thumbnail"]%>"></a></p>
   <% else %>
   <% end %>
 <% end %>

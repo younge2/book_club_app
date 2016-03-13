@@ -1,6 +1,10 @@
 <h1>Books</h1>
 
-<% @responses['items'].each do |response| %>
-<p><img src="<%= response['volumeInfo']['imageLinks']['thumbnail'] %>"/></p>
+<img src="<%= @response["items"][0]["volumeInfo"]["imageLinks"]["thumbnail"] %>">
 
-<% end %>
+<p><%= @response["items"][0]['volumeInfo']['title'] %></p>
+<p><%= @response["items"][0]['volumeInfo']['authors'][0] %></p>
+<p><%= @response["items"][0]['volumeInfo']['description']%></p>
+<p><%= @response["items"][0]['volumeInfo']['readingModes']["pageCount"] %></p>
+<p><%= @response["items"][0]['volumeInfo']['categories'][0] %></p>
+<p><%= @response["items"][0]['volumeInfo']['publishedDate'] %></p>
