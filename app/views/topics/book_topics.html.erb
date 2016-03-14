@@ -1,0 +1,22 @@
+<h1>Topics</h1>
+	<div>
+		<p><%= @club.name%></p>
+		<p><%= @book.title%></p>
+	</div>
+		<% @topics.each do |topic| %>
+			<div>
+				<p><a href = "<%= @book.id %>/topic/<%= topic.id%>"><%= topic.title %></a></p>
+			</div>
+		<% end %>
+
+
+
+<%= form_for @top, :url => create_topic_path do |f| %>
+
+		<%= f.label :title, 'Topic: '%>
+		<%= f.text_field :title %>
+
+		<%= f.submit %>
+
+
+	<% end %>

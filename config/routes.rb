@@ -4,6 +4,16 @@ Rails.application.routes.draw do
 
   get 'auth/:provider/callback' => 'auth#callback'
   get 'auth/logout' => 'auth#logout'
+
+  get 'clubs/:club_id/book/:book_id', to: "topics#book_topics", as: :some_topics
+  post 'clubs/:club_id/book/:book_id' => 'topics#create', as: :create_topic
+
+  get 'clubs/:club_id/book/:book_id/topic/:topic_id', to: "comments#topic_comments", as: :all_comments
+  post 'clubs/:club_id/book/:book_id/topic/:topic_id' => 'comments#create', as: :create_comment
+  
+  
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
