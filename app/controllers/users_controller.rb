@@ -14,23 +14,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def photo
-    picture_path = params[:photo][:picture].path
-    cloudinary_file = Cloudinary::Uploader.upload(picture_path)
-    # render json: cloudinary_file
-    @user = User.find(params[:id])
-    @photo = cloudinary_file["public_id"]
-    @user.update_attributes(:profilePic => @photo)
-    # puts cloudinary_file["public_id"]
-    redirect_to root_path
-  end
-
   def edit
     @user = User.find(params[:id])
   end
 
   def destroy
-    User.find(params[:id]).destroy
+    @user = User.find(params[:id]).destroy
     flash[:success] = 'Account successfully deleted. Sorry to see you go!'
     redirect_to root_path
   end

@@ -1,13 +1,6 @@
 <h1 class="profile-centered"><%= @user.name %></h1>
 <p class="lead profile-centered"><%= @user.bio %></p>
 
-<%= bootstrap_form_for @photo do |f| %>  
-  <%= f.file_field :picture %>
-  <%= f.submit %>
-<% end %>
-
-
-
 <!--
 Page will display user's
 Name (allow editing)
