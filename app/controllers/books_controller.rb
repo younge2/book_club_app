@@ -36,6 +36,20 @@ class BooksController < ApplicationController
       book.image = params[:books][:image]
       book.category = params[:books][:category]
     end
+    bookassociation = Bookstate.find_or_create_by({user_id: @current_user.id, book_id: book_new.id}) do |bookstate|
+      bookstate.user_id = @current_user.id
+      bookstate.book_id = book_new.id
+      end
+      if params[:books][:label] == 'to-read'
+        bookassociation.category = 0
+      elsif params[:books][:label] == 'has read'
+        bookassociation.category = 1
+      elsif params[:books][:label] == 'favorite'
+        bookassociation.category = 2
+      end
+      bookassociation.save!
+
+
     redirect_to root_path
   end
 

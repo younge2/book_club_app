@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class BooksUsersTest < ActiveSupport::TestCase
+class BookstateTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

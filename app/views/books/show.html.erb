@@ -51,7 +51,7 @@
   <%= f.hidden_field :title, value: response['title'] %>
   <%= f.hidden_field :author, value: response['authors'][0]%>
   <%= f.hidden_field :id, value: @response["items"][0]['id']%>
-  <%= f.hidden_field :label, value: 'have read'%>
+  <%= f.hidden_field :label, value: 'has read' %>
   <% if response.key?("publishedDate") %>
     <%= f.hidden_field :date, value: response['publishedDate']%>
   <% end %>  
