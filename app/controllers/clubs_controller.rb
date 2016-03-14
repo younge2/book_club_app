@@ -21,6 +21,8 @@ class ClubsController < ApplicationController
 
   def show
   	@club = Club.find(params[:id])
+    @user = User.find_by_id(@current_user.id)
+    @club.users.find_by_id(@current_user)
 
   end
   def update
@@ -28,6 +30,7 @@ class ClubsController < ApplicationController
     @join = Club.find_by_id(@club).users << User.find_by_id(current_user.id)
     redirect_to club_path
       #use put method on button
+
   end
 
   def quit_club  
