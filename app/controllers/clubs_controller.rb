@@ -21,7 +21,15 @@ class ClubsController < ApplicationController
 
   def show
   	@club = Club.find(params[:id])
+
   end
+  def update
+    @club = Club.find(params[:id])
+    @join = Club.find_by_id(@club).users << User.find_by_id(current_user.id)
+    redirect_to club_path
+      #use put method on button
+  end
+
 
   def edit
   	@club = Club.find(params[:id])
