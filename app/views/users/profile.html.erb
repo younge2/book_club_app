@@ -1,14 +1,42 @@
 <h1 class="profile-centered"><%= @user.name %></h1>
 <p class="lead profile-centered"><%= @user.bio %></p>
 
+<% @user.clubs.each do |c| %>
+<div>
+  <h3>Clubs You're In:</h3>
+  <p><a href="/clubs/<%= c.id %>"><%= c.name %></p></a>
+</div>
+<% end %>
+
+<div>
+  <h3>Your Favorite Books</h3>
+</div>
+
+<div>
+  <h3>Books You Want to Read</h3>
+</div>
+
+<div>
+  <h3>Books You've Read</h3>
+</div>
+
+<center>
+<% if @user.id == @current_user.id %>
+<%= link_to 'Edit Profile', edit_user_path, class: "btn btn-warning" %>
+<%= link_to 'Delete Account', @user, method: :delete, class: "btn btn-danger" %>
+<% end %> 
+</center>
+
 
 <!--
 Page will display user's
-Name - DONE
-Bio - DONE
+Name (allow editing) - DONE
+Bio (allow editing and deleting) - DONE
 Profile pic - via cloudinary
-Books to Read
-Books you've Read
-Favorite Books
-Clubs you're in
+Books to Read (allowing removing)
+Books you've Read (allow removing)
+Favorite Books (allow removing)
+Clubs you're in (should auto-remove if user leaves a club)
+Button to Delete Account - DONE
+
 -->

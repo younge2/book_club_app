@@ -6,6 +6,15 @@ Rails.application.routes.draw do
   #Facebook authenication routes
   get 'auth/:provider/callback' => 'auth#callback'
   get 'auth/logout' => 'auth#logout'
+
+  get 'clubs/:club_id/book/:book_id', to: "topics#book_topics", as: :some_topics
+  post 'clubs/:club_id/book/:book_id' => 'topics#create', as: :create_topic
+
+  get 'clubs/:club_id/book/:book_id/topic/:topic_id', to: "comments#topic_comments", as: :all_comments
+  post 'clubs/:club_id/book/:book_id/topic/:topic_id' => 'comments#create', as: :create_comment
+  
+  
+
   get 'books'  => 'books#index'
 
   
@@ -21,12 +30,18 @@ Rails.application.routes.draw do
 
 
   #User profiles
-  get 'users/profile/:id' => 'users#profile' 
+
+  get 'users/profile/:id' => 'users#profile', :as => 'user'
+  get 'users/profile/:id/edit' => 'users#edit', :as => 'edit_user'
+  patch 'users/profile/:id' => 'users#update'
+  delete 'users/profile/:id' => 'users#destroy'
 
   get 'books/show'  => 'books#show'
   post 'books' =>'books#create'
 
   resources :clubs
+  get 'clubs/:id' => 'clubs#show'
+  put 'clubs/:id' => 'clubs#update'
   # get 'clubs' => 'clubs#index'
   # get 'clubs/edit' =>'clubs#edit'
   # get 'clubs/new' => 'clubs#new'

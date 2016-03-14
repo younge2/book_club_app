@@ -1,0 +1,10 @@
+<div class="container">
+<%= bootstrap_form_for @user do |f| %>
+
+    <%= f.text_field :email, icon: "envelope" %>
+    <%= f.text_field :name, icon: "user" %>
+    <%= f.text_area :bio, icon: "pencil" %>
+
+    <%= f.submit :class => "btn btn-success" %>
+<% end %>
+</div>
