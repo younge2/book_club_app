@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   get 'users/profile/:id' => 'users#profile' 
 
   get 'books/show'  => 'books#show'
-
+  post 'books' =>'books#create'
 
   resources :clubs
   # get 'clubs' => 'clubs#index'

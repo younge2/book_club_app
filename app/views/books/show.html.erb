@@ -1,32 +1,90 @@
 <h1>Books</h1>
+<% response = @response["items"][0]["volumeInfo"] %>
+<img src="<%= response["imageLinks"]["thumbnail"] %>">
+<div>  
+  <% if response.key?('title') %>
+    <p><%= response['title'] %></p>
+  <% else %>
+  <% end %>
+  <% if response.key?("authors") %>
+    <p><%= response['authors'][0] %></p>
+  <% else %>
+  <% end %>
+  <% if response.key?("description") %>
+    <p><%= response['description']%></p>
+  <% else %>
+  <% end %>
+  <% if response.key?("readingModes") %>
+    <p><%= response['readingModes']["pageCount"] %></p>
+  <% else %>
+  <% end %>
+  <% if response.key?("categories") %>
+    <p><%= response['categories'][0] %></p>
+  <% else %>
+  <% end %>
+  <% if response.key?("publishedDate") %>
+    <p><%= response['publishedDate'] %></p>
+  <% else %>
+  <% end %>
+</div>
+<div>
+<%= bootstrap_form_for :books, url: '/books' do |f| %>
+  <%= f.hidden_field :title, value: response['title'] %>
+  <%= f.hidden_field :author, value: response['authors'][0]%>
+  <%= f.hidden_field :id, value: @response["items"][0]['id']%>
+  <%= f.hidden_field :label, value: 'to-read'%>
+  <% if response.key?("publishedDate") %>
+    <%= f.hidden_field :date, value: response['publishedDate']%>
+  <% end %>
+  <% if response['imagelinks'] != {} %>
+    <%= f.hidden_field :image, value: response["imageLinks"]["thumbnail"]%>
+  <% end %>
+  <% if response.key?('description') %>
+    <%= f.hidden_field :description, value: response['description'] %>
+  <% end %>
+  <% if response.key?("categories") %>
+    <%= f.hidden_field :category, value: response['categories'][0] %>
+  <% end %>
+  <%= f.submit 'To Read', class: 'btn btn-primary' %>
+<% end %>
+</div><%= bootstrap_form_for :books, url: '/books' do |f| %>
+  <%= f.hidden_field :title, value: response['title'] %>
+  <%= f.hidden_field :author, value: response['authors'][0]%>
+  <%= f.hidden_field :id, value: @response["items"][0]['id']%>
+  <%= f.hidden_field :label, value: 'have read'%>
+  <% if response.key?("publishedDate") %>
+    <%= f.hidden_field :date, value: response['publishedDate']%>
+  <% end %>  
+ <% if response['imagelinks'] != {} %>
+    <%= f.hidden_field :image, value: response["imageLinks"]["thumbnail"]%>
+  <% end %>
+  <% if response.key?('description') %>
+    <%= f.hidden_field :description, value: response['description'] %>
+  <% end %>
+  <% if response.key?("categories") %>
+    <%= f.hidden_field :category, value: response['categories'][0] %>
+  <% end %>
+  <%= f.submit 'Have Read', class: 'btn btn-primary' %>
+  <% end %>
+</div>
+<%= bootstrap_form_for :books, url: '/books' do |f| %>
+  <%= f.hidden_field :title, value: response['title'] %>
+  <%= f.hidden_field :author, value: response['authors'][0]%>
+  <%= f.hidden_field :id, value: @response["items"][0]['id']%>
+  <%= f.hidden_field :label, value: 'favorite'%>
+  <% if response.key?("publishedDate") %>
+    <%= f.hidden_field :date, value: response['publishedDate']%>
+  <% end %>
+ <% if response['imagelinks'] != {} %>
+    <%= f.hidden_field :image, value: response["imageLinks"]["thumbnail"]%>
+  <% end %>
+  <% if response.key?('description') %>
+    <%= f.hidden_field :description, value: response['description'] %>
+  <% end %>
+  <% if response.key?("categories") %>
+    <%= f.hidden_field :category, value: response['categories'][0] %>
+  <% end %>
+  <%= f.submit 'Favorite', class: 'btn btn-primary' %>
+<% end %>
+</div>
 
-<img src="<%= @response["items"][0]["volumeInfo"]["imageLinks"]["thumbnail"] %>">
-  <% if @response["items"][0]["volumeInfo"].key?('title') %>
-    <p><%= @response["items"][0]['volumeInfo']['title'] %></p>
-  <% else %>
-  <% end %>
-  <% if @response["items"][0]["volumeInfo"].key?("authors") %>
-    <p><%= @response["items"][0]['volumeInfo']['authors'][0] %></p>
-  <% else %>
-  <% end %>
-  <% if @response["items"][0]["volumeInfo"].key?("description") %>
-    <p><%= @response["items"][0]['volumeInfo']['description']%></p>
-  <% else %>
-  <% end %>
-  <% if @response["items"][0]["volumeInfo"].key?("readingModes") %>
-    <p><%= @response["items"][0]['volumeInfo']['readingModes']["pageCount"] %></p>
-  <% else %>
-  <% end %>
-  <% if @response["items"][0]["volumeInfo"].key?("categories") %>
-    <p><%= @response["items"][0]['volumeInfo']['categories'][0] %></p>
-  <% else %>
-  <% end %>
-  <% if @response["items"][0]["volumeInfo"].key?("publishedDate") %>
-    <p><%= @response["items"][0]['volumeInfo']['publishedDate'] %></p>
-  <% else %>
-  <% end %>
-
-
-<button type="button" class="btn btn-info">To-Read</button>
-<button type="button" class="btn btn-info">Have Read</button>
-<button type="button" class="btn btn-info">Favorite</button>
