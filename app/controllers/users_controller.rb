@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def create
     user = User.create(user_params)
-    flash[:success] = 'Thank you for signing up!'
+    flash[:success] = 'Thank you for signing up! Welcome to ReadMe!'
     session[:user_id] = user.id #logs the newly registered user in automatically
     redirect_to root_path
   end
@@ -16,6 +16,16 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      @user.update_attributes(user_params)
+      redirect_to user_path 
+    else
+      render 'edit'
+    end
   end
 
   def destroy

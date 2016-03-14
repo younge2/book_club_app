@@ -2,9 +2,13 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :books
   has_and_belongs_to_many :clubs
 
+  validates :name,
+  presence: true
+
   validates :email,
   presence: true,
-  uniqueness: {case_sensitive: false}
+  uniqueness: {case_sensitive: false},
+  email: true
 
   validates :password, presence: true, on: :create
 
