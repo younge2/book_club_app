@@ -1,11 +1,17 @@
-<h1>BookClubs</h1>
+<div class="container">
+	<div class="well">
 
-<% @clubs.each do |club| %>
+		<h1>BookClubs</h1>
 
-	<h3><%= link_to club.name, :controller => "clubs", :action => "show", :id => club.id %></h3>
-	<p><%= club.blurb %></p>
-	
+		<% @clubs.each do |club| %>
+
+			<h3><%= link_to club.name, :controller => "clubs", :action => "show", :id => club.id %></h3>
+			<p><%= club.blurb %></p>
+			
 
 
 
-<% end %>
+		<% end %>
+	</div>
+</div>
+
