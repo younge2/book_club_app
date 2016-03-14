@@ -5,8 +5,6 @@
 <p><%= @club.blurb %></p>
 
 
-
-
 <h5>Club Members:</h5>
 <p><% @club.users.each do |u| %></p>
 	<a href="/users/profile/<%= u.id %>"><%= u.name %></a>
@@ -19,10 +17,10 @@
 
 <% if @current_user.id == @club.owner %>
 
-	<button class="btn btn-info"><%= link_to 'Delete Club', @club, method: :delete %></button>
+	<button class="btn btn-danger"><%= link_to 'Delete Club', @club, method: :delete %></button>
 <% end %>	
 
-
+<button class="btn btn-warning"><%= link_to 'Leave Club', {controller: 'clubs', action: 'quit_club'}, method: :delete  %></button>
 
 <button class="btn btn-info"><%= link_to 'Join Club', @join, method: :put %></button>
 

@@ -30,6 +30,15 @@ class ClubsController < ApplicationController
       #use put method on button
   end
 
+  def quit_club  
+
+    @user = User.find_by_id(@current_user.id)
+    @club = Club.find(params[:id])
+    @quit_club = @club.users.delete(@user)
+    
+    redirect_to club_path
+    
+  end
 
   def edit
   	@club = Club.find(params[:id])
