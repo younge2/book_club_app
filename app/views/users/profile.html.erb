@@ -1,23 +1,54 @@
+<div class="container">
 <h1 class="profile-centered"><%= @user.name %></h1>
 <p class="lead profile-centered"><%= @user.bio %></p>
 
-<% @user.clubs.each do |c| %>
-<div>
-  <h3>Clubs You're In:</h3>
-  <p><a href="/clubs/<%= c.id %>"><%= c.name %></p></a>
-</div>
-<% end %>
 
 <div>
-  <h3>Your Favorite Books</h3>
+  <h3>
+    <% if @user.id == @current_user.id %>
+      Clubs You're In
+    <% end %>
+    <% if @user.id != @current_user.id%>
+      Clubs
+    <% end %>
+  </h3>
+    <% @user.clubs.each do |c| %>
+    <p><a href="/clubs/<%= c.id %>"><%= c.name %></p></a>
+    <% end %>
+</div>
+
+
+<div>
+  <h3>
+    <% if @user.id == @current_user.id %>
+      Your Favorite Books
+    <% end %>
+    <% if @user.id != @current_user.id%>
+      Favorite Books
+    <% end %>
+  </h3>
 </div>
 
 <div>
-  <h3>Books You Want to Read</h3>
+  <h3>
+    <% if @user.id == @current_user.id %>
+      Your To-Read List
+    <% end %>
+    <% if @user.id != @current_user.id%>
+      To-Read List
+    <% end %>
+  </h3>
 </div>
 
 <div>
-  <h3>Books You've Read</h3>
+  <h3>
+    <% if @user.id == @current_user.id %>
+      Books You've Read
+    <% end %>
+    <% if @user.id != @current_user.id%>
+      Finished Books
+    <% end %>
+  </h3>
 </div>
 
 <center>
@@ -26,6 +57,8 @@
 <%= link_to 'Delete Account', @user, method: :delete, class: "btn btn-danger" %>
 <% end %> 
 </center>
+
+</div>
 
 
 <!--
