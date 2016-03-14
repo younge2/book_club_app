@@ -18,10 +18,11 @@
 	<% if @club.owner == @current_user.id %>
 		<button class="btn btn-info"><%= link_to 'Delete', @club, method: :delete %></button>
 	<% end %>
+
 <% end %>
 
 
 
 <h4>Join Club</h4>
-
+<button class="btn btn-info"><%= link_to 'Join Club', @join, method: :put %></button>
 

@@ -13,11 +13,12 @@
           <%= link_to "Logout", auth_logout_path, class: "btn btn-warning" %>
           
           <% if @current_user %>
-          <div class="well"> 
+            <div class="well">  
               Current User:
-              <%= @current_user.name %>     
-            <% end %>
-          </div>
+              <%= @current_user.name %>
+            </div>   
+          <% end %>
+          
         </div>
       </div>  
     </div>
@@ -46,11 +47,12 @@
 					<%= link_to "Logout", auth_logout_path, class: "btn btn-warning" %>
 					
 					<% if @current_user %>
-					<div class="well"> 
+					  <div class="well"> 
 					  	Current User:
-					  	<%= @current_user.name %>			
-					  <% end %>
-					</div>
+					  	<%= @current_user.name %>	
+            </div>		
+					<% end %>
+					
 				</div>
 			</div>	
 	  </div>
