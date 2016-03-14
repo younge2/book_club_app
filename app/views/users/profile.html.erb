@@ -1,6 +1,11 @@
 <h1 class="profile-centered"><%= @user.name %></h1>
 <p class="lead profile-centered"><%= @user.bio %></p>
 
+<button type="button" class="btn btn-warning"><%= link_to 'Edit Profile', edit_user_path %>
+</button>
+
+<button class="btn btn-danger"><%= link_to 'Delete Account', @user.id, method: :delete %></button> 
+
 <!--
 Page will display user's
 Name (allow editing)

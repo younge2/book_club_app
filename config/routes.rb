@@ -18,7 +18,8 @@ Rails.application.routes.draw do
 
   #User profiles
   get 'users/profile/:id' => 'users#profile'
-  get 'users/profile/:id/edit' => 'users#edit' 
+  get 'users/profile/:id/edit' => 'users#edit', :as => 'edit_user'
+  delete 'users/profile/:id' => 'users#destroy'
 
   get 'books/show'  => 'books#show'
 
