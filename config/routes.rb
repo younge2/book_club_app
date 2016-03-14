@@ -6,6 +6,15 @@ Rails.application.routes.draw do
   #Facebook authenication routes
   get 'auth/:provider/callback' => 'auth#callback'
   get 'auth/logout' => 'auth#logout'
+
+  get 'clubs/:club_id/book/:book_id', to: "topics#book_topics", as: :some_topics
+  post 'clubs/:club_id/book/:book_id' => 'topics#create', as: :create_topic
+
+  get 'clubs/:club_id/book/:book_id/topic/:topic_id', to: "comments#topic_comments", as: :all_comments
+  post 'clubs/:club_id/book/:book_id/topic/:topic_id' => 'comments#create', as: :create_comment
+  
+  
+
   get 'books'  => 'books#index'
 
   
