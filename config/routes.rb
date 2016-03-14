@@ -21,7 +21,8 @@ Rails.application.routes.draw do
 
 
   #User profiles
-  get 'users/profile/:id' => 'users#profile' 
+  resources :users
+  # get 'users/profile/:id' => 'users#profile' 
 
   get 'books/show'  => 'books#show'
 
