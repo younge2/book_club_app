@@ -21,7 +21,10 @@ Rails.application.routes.draw do
 
 
   #User profiles
-  get 'users/profile/:id' => 'users#profile' 
+  get 'users/profile/:id' => 'users#profile', :as => 'user'
+  get 'users/profile/:id/edit' => 'users#edit', :as => 'edit_user'
+  patch 'users/profile/:id' => 'users#update'
+  delete 'users/profile/:id' => 'users#destroy'
 
   get 'books/show'  => 'books#show'
 

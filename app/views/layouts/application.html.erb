@@ -31,12 +31,20 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Open Clubs", "/clubs/" %></li>
-        <li><%= link_to "Start a Club", "/clubs/new" %></li>
+        <% if @current_user %>
+          <li><%= link_to "Start a Club", "/clubs/new" %></li>
+        <% end %>
+         <% if !@current_user %>
+          <li><%= link_to "Start a Club", login_path %></li>
+        <% end %>
         <% if @current_user %>
           <li><%= link_to "Your Profile", :controller => "users", :action => "profile", :id => @current_user.id %></li>
+          <li><%= link_to "Logout", auth_logout_path %></li>
         <% end %>
-        <li><%= link_to "Sign Up", signup_path %></li>
-        <li><%= link_to "Login", login_path %></li>
+        <% if !@current_user %>
+          <li><%= link_to "Sign Up", signup_path %></li>
+          <li><%= link_to "Login", login_path %></li>
+        <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
