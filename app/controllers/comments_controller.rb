@@ -15,9 +15,8 @@ class CommentsController < ApplicationController
 	def create
 		@topic = Topic.find(params[:topic_id])
 		com = @topic.comments.create(comment_params)
-		com.author = 1
+		com.author = @current_user.id
 		com.save
-		# com.author = 1 #needs to change to @current_user.id
 		redirect_to all_comments_path
 
 	end

@@ -1,12 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BookClubApp</title>
+  <title>ReadMe</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">ReadMe</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <form class="navbar-form navbar-left" role="search" method="GET" action='/books'>
+          <div class="form-group">
+            <%= text_field_tag :query, params[:query], size: 50, placeholder: "ex: Fifty Shades or EL James", class: "form-control"%>
+        </div>
+          <button type="submit" class="btn btn-default">Search</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Open Clubs", "/clubs/" %></li>
+        <% if @current_user %>
+          <li><%= link_to "Start a Club", "/clubs/new" %></li>
+        <% end %>
+         <% if !@current_user %>
+          <li><%= link_to "Start a Club", login_path %></li>
+        <% end %>
+        <% if @current_user %>
+          <li><%= link_to "Your Profile", :controller => "users", :action => "profile", :id => @current_user.id %></li>
+          <li><%= link_to "Logout", auth_logout_path %></li>
+        <% end %>
+        <% if !@current_user %>
+          <li><%= link_to "Sign Up", signup_path %></li>
+          <li><%= link_to "Login", login_path %></li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value, class: "flash #{key}" %>
+<% end %>
 
 <%= yield %>
 

@@ -1,0 +1,27 @@
+<h1>My Book Club Page</h1>
+
+<h3>Club Name: <%= @club.name %></h3>
+
+<p><%= @club.blurb %></p>
+
+<% @club.users.each do |o| %>
+	<% if @club.owner = o.id %>
+
+	<% end %>
+<p>Club Admin: <%= o.name %></p>
+<% end %>
+
+<h5>Club Members:</h5>
+<p><% @club.users.each do |u| %></p>
+	<a href="/users/profile/<%= u.id %>"><%= u.name %></a>
+
+	<% if @club.owner == @current_user.id %>
+		<button class="btn btn-info"><%= link_to 'Delete', @club, method: :delete %></button>
+	<% end %>
+<% end %>
+
+
+
+<h4>Join Club</h4>
+
+

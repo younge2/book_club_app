@@ -1,0 +1,32 @@
+<h1>Books</h1>
+
+<img src="<%= @response["items"][0]["volumeInfo"]["imageLinks"]["thumbnail"] %>">
+  <% if @response["items"][0]["volumeInfo"].key?('title') %>
+    <p><%= @response["items"][0]['volumeInfo']['title'] %></p>
+  <% else %>
+  <% end %>
+  <% if @response["items"][0]["volumeInfo"].key?("authors") %>
+    <p><%= @response["items"][0]['volumeInfo']['authors'][0] %></p>
+  <% else %>
+  <% end %>
+  <% if @response["items"][0]["volumeInfo"].key?("description") %>
+    <p><%= @response["items"][0]['volumeInfo']['description']%></p>
+  <% else %>
+  <% end %>
+  <% if @response["items"][0]["volumeInfo"].key?("readingModes") %>
+    <p><%= @response["items"][0]['volumeInfo']['readingModes']["pageCount"] %></p>
+  <% else %>
+  <% end %>
+  <% if @response["items"][0]["volumeInfo"].key?("categories") %>
+    <p><%= @response["items"][0]['volumeInfo']['categories'][0] %></p>
+  <% else %>
+  <% end %>
+  <% if @response["items"][0]["volumeInfo"].key?("publishedDate") %>
+    <p><%= @response["items"][0]['volumeInfo']['publishedDate'] %></p>
+  <% else %>
+  <% end %>
+
+
+<button type="button" class="btn btn-info">To-Read</button>
+<button type="button" class="btn btn-info">Have Read</button>
+<button type="button" class="btn btn-info">Favorite</button>

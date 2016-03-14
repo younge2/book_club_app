@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   root 'main#index'
+  get 'about' => 'main#about'
 
+  #Facebook authenication routes
   get 'auth/:provider/callback' => 'auth#callback'
   get 'auth/logout' => 'auth#logout'
 
@@ -13,6 +15,36 @@ Rails.application.routes.draw do
   
   
 
+  get 'books'  => 'books#index'
+
+  
+  #Local authentication routes
+  get 'signup' => 'users#new', :as => 'users'
+  post 'signup' => 'users#create'
+  get "login" => "sessions#new"
+  post "login" => "sessions#create"
+  delete "logout" => "sessions#destroy"
+
+
+  get 'books/:id'  => 'books#show'
+
+
+  #User profiles
+  get 'users/profile/:id' => 'users#profile', :as => 'user'
+  get 'users/profile/:id/edit' => 'users#edit', :as => 'edit_user'
+  patch 'users/profile/:id' => 'users#update'
+  delete 'users/profile/:id' => 'users#destroy'
+
+  get 'books/show'  => 'books#show'
+
+
+  resources :clubs
+  get 'clubs/:id' => 'clubs#show'
+  # get 'clubs' => 'clubs#index'
+  # get 'clubs/edit' =>'clubs#edit'
+  # get 'clubs/new' => 'clubs#new'
+  # get 'clubs/show' => 'clubs#show'
+  # post 'clubs' => 'clubs#create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
