@@ -1,20 +1,23 @@
 <h1 class="profile-centered"><%= @user.name %></h1>
 <p class="lead profile-centered"><%= @user.bio %></p>
 
+
+<% if current_user.id == @user.id %>
 <button type="button" class="btn btn-warning"><%= link_to 'Edit Profile', edit_user_path %>
 </button>
 
-<button class="btn btn-danger"><%= link_to 'Delete Account', @user.id, method: :delete %></button> 
+<button class="btn btn-danger"><%= link_to 'Delete Account', @user, method: :delete %></button>
+<% end %> 
 
 <!--
 Page will display user's
-Name (allow editing)
-Bio (allow editing and deleting)
+Name (allow editing) - DONE
+Bio (allow editing and deleting) - DONE
 Profile pic - via cloudinary
 Books to Read
 Books you've Read
 Favorite Books
 Clubs you're in
-Button to Delete Account
+Button to Delete Account - DONE
 
 -->
