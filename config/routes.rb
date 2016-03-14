@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
 
   #User profiles
+
   get 'users/profile/:id' => 'users#profile', :as => 'user'
   get 'users/profile/:id/edit' => 'users#edit', :as => 'edit_user'
   patch 'users/profile/:id' => 'users#update'
