@@ -9,7 +9,9 @@
 	  <%= f.label "Tell us a little about yourself (optional)" %>
 	  <%= f.text_area :bio %>
 
-	  <%= f.password_field :password %>
+  <%=f.label "Your password must be at least six characters long" %>
+  <%= f.password_field :password%>
+
 
 	  <%= f.password_field :password_confirmation %>
 

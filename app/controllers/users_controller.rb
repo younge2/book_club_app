@@ -5,9 +5,15 @@ class UsersController < ApplicationController
 
   def create
     user = User.create(user_params)
-    flash[:success] = 'Thank you for signing up! Welcome to ReadMe!'
-    session[:user_id] = user.id #logs the newly registered user in automatically
-    redirect_to root_path
+    if user.valid?
+      flash[:success] = 'Thank you for signing up! Welcome to ReadMe!'
+      session[:user_id] = user.id #logs the newly registered user in automatically
+      redirect_to root_path
+    end
+    else
+      flash[:warning] = 'Sorry your account was unable to be created. Please
+      be sure that your password is at least six characters long, and your confirm password field matches your password.'
+      redirect_to signup_path
   end
 
   def profile
