@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
   uniqueness: {case_sensitive: false},
   email: true
 
-  validates :password,
+
+  validates :password, unless: :provider?,
   length: {:minimum => 6, :maximum => 50}
   
   validates_confirmation_of :password, unless: :provider?
