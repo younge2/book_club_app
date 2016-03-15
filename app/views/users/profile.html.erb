@@ -53,11 +53,39 @@
 
 <center>
 <% if @user.id == @current_user.id %>
-<%= link_to 'Edit Profile', edit_user_path, class: "btn btn-warning" %>
-<%= link_to 'Delete Account', @user, method: :delete, class: "btn btn-danger" %>
+<%= link_to 'Edit Profile', '#edit-profile', class: 'btn btn-warning', data: {:toggle => 'modal'} %>
+<%= link_to 'Delete Account', '#confirm-delete', class: 'btn btn-danger', data: {:toggle => 'modal'} %>
 <% end %> 
 </center>
 
+<div class="modal fade" id="edit-profile">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Edit Your Profile</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'users/editprofile' %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="modal fade" id="confirm-delete">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Sorry to see you go!</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'users/confirmdelete' %>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 
 
