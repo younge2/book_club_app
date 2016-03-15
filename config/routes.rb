@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   
 
   get 'books'  => 'books#index'
+  get 'books/:id/addbook' => 'books#addbooktoclub', as: :addbook
+  post 'books/:id/addbook' => 'books#addbook', as: :posttoclub
+  put 'books/:id/' => 'books#addbook'
+  post 'books/:book_id/addbook/:id' => 'books#postbooktoclub', as: :postbooktoclub 
 
   
   #Local authentication routes
