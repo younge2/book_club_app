@@ -32,6 +32,14 @@ class ClubsController < ApplicationController
       #use put method on button
 
   end
+  def addbook
+    @club = Club.find(params[:id])
+    @bookadd = Club.find_by_id(@club).books << Book.find_by_id(params[:id])
+    redirect_to club_path
+      #use put method on button
+
+  end
+
 
   def quit_club  
 
