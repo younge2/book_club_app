@@ -32,6 +32,7 @@
               <a href="/books/<%= book.isbn%>"><img src ="<%=book.image%>"></a>
               <p><a href="/books/<%= book.isbn%>"><%= book.title %></a></p>
               <p>By: <%=book.author%></p>
+              <%= link_to 'Delete', bookdelete_path, class: 'btn btn-danger' %>
             </div>
           <% end %>
         <% end %>
@@ -54,6 +55,7 @@
               <a href="/books/<%= book.isbn%>"><img src ="<%=book.image%>"></a>
               <p><a href="/books/<%= book.isbn%>"><%= book.title %></a></p>
               <p>By: <%=book.author%></p>
+              <%= link_to 'Delete', bookdelete_path, class: 'btn btn-danger' %>
             </div>
           <% end %>
         <% end %>
@@ -74,8 +76,8 @@
           <% if userbook.book_id == book.id && userbook.category == 1 %>
             <div>
               <a href="/books/<%= book.isbn%>"><img src ="<%=book.image%>"></a>
-              <p><a href="/books/<%= book.isbn%>"><%= book.title %></a></p>
               <p>By: <%=book.author%></p>
+              <%=link_to 'delete', {controller: 'books', action: 'delete'}, method: :delete, class: 'btn btn-warning' %>
             </div>
           <% end %>
         <% end %>

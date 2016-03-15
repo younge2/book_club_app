@@ -1,16 +1,18 @@
-<h1> New User </h1>
+<div class="container">
+	<h2> Sign up for ReadMe here! </h2>
 
-<%= bootstrap_form_for @user do |f| %>
-  <%= f.text_field :name %>
+	<%= bootstrap_form_for @user do |f| %>
+	  <%= f.text_field :name %>
 
-  <%= f.text_field :email %>
+	  <%= f.text_field :email %>
 
-  <%= f.label "Tell us a little about yourself (optional)" %>
-  <%= f.text_area :bio %>
+	  <%= f.label "Tell us a little about yourself (optional)" %>
+	  <%= f.text_area :bio %>
 
-  <%= f.password_field :password %>
+	  <%= f.password_field :password %>
 
-  <%= f.password_field :password_confirmation %>
+	  <%= f.password_field :password_confirmation %>
 
-  <%= f.submit %>
-<% end %>
+	  <%= f.submit %>
+	<% end %>
+</div>

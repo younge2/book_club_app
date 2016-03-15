@@ -86,7 +86,11 @@ class BooksController < ApplicationController
       #use put method on button
       redirect_to addbook_path
   end
-
+  def delete
+    deletebook = Bookstate.where({user_id: @current_user.id, book_id: params[:id]}) do |book|
+      book.destory
+    end
+  end
 end
 
 

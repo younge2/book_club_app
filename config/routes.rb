@@ -21,7 +21,8 @@ Rails.application.routes.draw do
   post 'books/:id/addbook' => 'books#addbook', as: :posttoclub
   put 'books/:id/' => 'books#addbook'
   post 'books/:book_id/addbook/:id' => 'books#postbooktoclub', as: :postbooktoclub 
-
+  delete 'books/:id/delete' => 'books#delete', as: :bookdelete
+ 
   
   #Local authentication routes
   get 'signup' => 'users#new', :as => 'users'
