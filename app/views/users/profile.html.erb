@@ -22,6 +22,7 @@
   <h3>
     <% if @user.id == @current_user.id %>
       Your Favorite Books
+       <% end %>
     <% end %>
     <% if @user.id != @current_user.id%>
       Favorite Books
@@ -57,19 +58,3 @@
 <%= link_to 'Delete Account', @user, method: :delete, class: "btn btn-danger" %>
 <% end %> 
 </center>
-
-</div>
-
-
-<!--
-Page will display user's
-Name (allow editing) - DONE
-Bio (allow editing and deleting) - DONE
-Profile pic - via cloudinary
-Books to Read (allowing removing)
-Books you've Read (allow removing)
-Favorite Books (allow removing)
-Clubs you're in (should auto-remove if user leaves a club)
-Button to Delete Account - DONE
-
--->
