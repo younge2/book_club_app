@@ -1,0 +1,11 @@
+$post-margin: 3em;
+
+
+.post_well {
+	margin-left: $post-margin;
+	width: 70%;
+}
+
+body {
+	padding-left: $post-margin;
+}
