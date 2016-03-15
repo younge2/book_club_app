@@ -112,10 +112,14 @@
 </div>
 <div class="well">
   <p>Clubs reading this book </p>
-  <% book = @books.where(title: response['title']).first %>
-  <% book.clubs.each do |c| %>
-  <p><a href="/clubs/<%= c.id%> "><%= c.name %></a></p>
-  <%end %> 
+  <% if @books.where(title: response['title']) %>
+    <% book = @books.where(title: response['title']).first %>
+    <% if book && book.clubs %>
+    <% book.clubs.each do |c| %>
+    <p><a href="/clubs/<%= c.id%> "><%= c.name %></a></p>
+    <%end %> 
+  <% end %>
+  <% end %>
 
 </div>
 
