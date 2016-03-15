@@ -21,6 +21,9 @@ class BooksController < ApplicationController
     @response = HTTParty.get(url)
     @book = Book.new
     @user = @current_user
+    @books = Book.all
+    @clubs = Club.all
+    @booksclubs = BooksClubs.all
   end
 
   def new
