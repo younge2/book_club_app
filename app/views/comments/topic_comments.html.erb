@@ -1,28 +1,30 @@
-<h1>Comments </h1>
-	<div>
-		<p><%= @club.name%></p>
-		<p><%= @book.title%></p>
-		<p><%= @topic.title %></p>
+	<div class= "topic_header page-header">
+		<h1>Comments </h1>
+		<h1><%= @club.name%></h1>
+		<h2><%= @book.title%> <small><%= @topic.title %> </small></h2>
 	</div>
 	<% @arr.each do |comment, user| %>
 		<% if user %>
-		<div>
+		<div class = "well post_well">
 			<p><%= comment.content %></p>
-			<p><%= user.name%></p>
-			<% if user.id == @current_user.id %>
-				<p><%= link_to "Edit", edit_comment_path(@club, @book, @topic, comment) %></p>
+			<p>~ <%= user.name%></p>
+			
+			<% if @curent_user && user.id == @current_user.id %>
+				<p class= "comment_edit"><%= link_to "Edit", edit_comment_path(@club, @book, @topic, comment), class: 'btn btn-warning' %></p>
 			<% end %>
 		</div>
 		<% end %>
 	<% end %>
+<% if @current_user %>
+<div class="form_container">
+	<%= bootstrap_form_for @post, :url => create_comment_path do |f| %>
 
-
-	<%= form_for @post, :url => create_comment_path do |f| %>
-
-		<%= f.label :content, 'Comment:'%>
+		<%= f.label :content, 'New Comment:'%>
 		<%= f.text_area :content%>
 
-		<%= f.submit %>
+		<%= f.submit class: "btn btn-info" %>
 
 
+	<% end %>
+	</div>
 	<% end %>
