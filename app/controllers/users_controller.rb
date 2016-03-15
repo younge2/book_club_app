@@ -12,6 +12,8 @@ class UsersController < ApplicationController
 
   def profile
     @user = User.find(params[:id])
+    @books = Bookstate.where(user_id: @user.id).to_a
+    @allbooks = Book.all
   end
 
   def edit

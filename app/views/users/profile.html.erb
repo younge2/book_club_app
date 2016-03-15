@@ -2,7 +2,6 @@
 <h1 class="profile-centered"><%= @user.name %></h1>
 <p class="lead profile-centered"><%= @user.bio %></p>
 
-
 <div>
   <h3>
     <% if @user.id == @current_user.id %>
@@ -23,10 +22,17 @@
     <% if @user.id == @current_user.id %>
       Your Favorite Books
     <% end %>
-    <% if @user.id != @current_user.id%>
+    <% if @user.id != @current_user.id %>
       Favorite Books
     <% end %>
   </h3>
+    <% @books.each do |userbook| %>
+      <% @allbooks.each do |book| %>
+        <% if userbook.book_id == book.id && userbook.category == 2 %>
+          <p><%= book.title %></p>
+        <% end %>
+      <% end %>
+    <% end %>
 </div>
 
 <div>
@@ -38,6 +44,13 @@
       To-Read List
     <% end %>
   </h3>
+    <% @books.each do |userbook| %>
+      <% @allbooks.each do |book| %>
+        <% if userbook.book_id == book.id && userbook.category == 0 %>
+          <p><%= book.title %></p>
+        <% end %>
+      <% end %>
+    <% end %>
 </div>
 
 <div>
@@ -49,6 +62,13 @@
       Finished Books
     <% end %>
   </h3>
+  <% @books.each do |userbook| %>
+      <% @allbooks.each do |book| %>
+        <% if userbook.book_id == book.id && userbook.category == 1 %>
+          <p><%= book.title %></p>
+        <% end %>
+      <% end %>
+    <% end %>
 </div>
 
 <center>
@@ -87,17 +107,3 @@
   </div>
 </div>
 </div>
-
-
-<!--
-Page will display user's
-Name (allow editing) - DONE
-Bio (allow editing and deleting) - DONE
-Profile pic - via cloudinary
-Books to Read (allowing removing)
-Books you've Read (allow removing)
-Favorite Books (allow removing)
-Clubs you're in (should auto-remove if user leaves a club)
-Button to Delete Account - DONE
-
--->
