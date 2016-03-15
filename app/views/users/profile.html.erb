@@ -1,103 +1,121 @@
 <div class="container">
-<h1 class="profile-centered"><%= @user.name %></h1>
-<p class="lead profile-centered"><%= @user.bio %></p>
+  <h1 class="profile-centered"><%= @user.name %></h1>
+  <p class="lead profile-centered"><%= @user.bio %></p>
 
-
-<div>
-  <h3>
-    <% if @user.id == @current_user.id %>
+  <div class="well">
+    <h3>
+      <% if @user.id == @current_user.id %>
       Clubs You're In
-    <% end %>
-    <% if @user.id != @current_user.id%>
+      <% end %>
+      <% if @user.id != @current_user.id%>
       Clubs
-    <% end %>
-  </h3>
-    <% @user.clubs.each do |c| %>
-    <p><a href="/clubs/<%= c.id %>"><%= c.name %></p></a>
-    <% end %>
-</div>
+      <% end %>
+    </h3>
+      <% @user.clubs.each do |c| %>
+        <p><a href="/clubs/<%= c.id %>"><%= c.name %></a></p>
+      <% end %>
+  </div>
+
+  <div class="well">
+    <h3>
+      <% if @user.id == @current_user.id %>
+        Your Favorite Books
+      <% end %>
+      <% if @user.id != @current_user.id %>
+        Favorite Books
+      <% end %>
+    </h3>
+      <% @books.each do |userbook| %>
+        <% @allbooks.each do |book| %>
+          <% if userbook.book_id == book.id && userbook.category == 2 %>
+            <div>
+              <a href="/books/<%= book.isbn%>"><img src ="<%=book.image%>"></a>
+              <p><a href="/books/<%= book.isbn%>"><%= book.title %></a></p>
+              <p>By: <%=book.author%></p>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+  </div>
+
+  <div class="well">
+    <h3>
+      <% if @user.id == @current_user.id %>
+        Your To-Read List
+      <% end %>
+      <% if @user.id != @current_user.id%>
+        To-Read List
+      <% end %>
+    </h3>
+      <% @books.each do |userbook| %>
+        <% @allbooks.each do |book| %>
+          <% if userbook.book_id == book.id && userbook.category == 0 %>
+            <div>
+              <a href="/books/<%= book.isbn%>"><img src ="<%=book.image%>"></a>
+              <p><a href="/books/<%= book.isbn%>"><%= book.title %></a></p>
+              <p>By: <%=book.author%></p>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+  </div>
+
+  <div class="well">
+    <h3>
+      <% if @user.id == @current_user.id %>
+        Books You've Read
+      <% end %>
+      <% if @user.id != @current_user.id%>
+        Finished Books
+      <% end %>
+    </h3>
+    <% @books.each do |userbook| %>
+        <% @allbooks.each do |book| %>
+          <% if userbook.book_id == book.id && userbook.category == 1 %>
+            <div>
+              <a href="/books/<%= book.isbn%>"><img src ="<%=book.image%>"></a>
+              <p><a href="/books/<%= book.isbn%>"><%= book.title %></a></p>
+              <p>By: <%=book.author%></p>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+  </div>
 
 
-<div>
-  <h3>
-    <% if @user.id == @current_user.id %>
-      Your Favorite Books
-    <% end %>
-    <% if @user.id != @current_user.id%>
-      Favorite Books
-    <% end %>
-  </h3>
-</div>
-
-<div>
-  <h3>
-    <% if @user.id == @current_user.id %>
-      Your To-Read List
-    <% end %>
-    <% if @user.id != @current_user.id%>
-      To-Read List
-    <% end %>
-  </h3>
-</div>
-
-<div>
-  <h3>
-    <% if @user.id == @current_user.id %>
-      Books You've Read
-    <% end %>
-    <% if @user.id != @current_user.id%>
-      Finished Books
-    <% end %>
-  </h3>
-</div>
-
-<center>
-<% if @user.id == @current_user.id %>
-<%= link_to 'Edit Profile', '#edit-profile', class: 'btn btn-warning', data: {:toggle => 'modal'} %>
-<%= link_to 'Delete Account', '#confirm-delete', class: 'btn btn-danger', data: {:toggle => 'modal'} %>
-<% end %> 
-</center>
-
-<div class="modal fade" id="edit-profile">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Edit Your Profile</h4>
-      </div>
-      <div class="modal-body">
-        <%= render 'users/editprofile' %>
+  <div class="modal fade" id="edit-profile">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Edit Your Profile</h4>
+        </div>
+        <div class="modal-body">
+          <%= render 'users/editprofile' %>
+        </div>
       </div>
     </div>
   </div>
-</div>
-</div>
 
-<div class="modal fade" id="confirm-delete">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Sorry to see you go!</h4>
-      </div>
-      <div class="modal-body">
-        <%= render 'users/confirmdelete' %>
+  <div class="modal fade" id="confirm-delete">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Sorry to see you go!</h4>
+        </div>
+        <div class="modal-body">
+          <%= render 'users/confirmdelete' %>
+        </div>
       </div>
     </div>
   </div>
+
+  <center>
+  <% if @user.id == @current_user.id %>
+  <%= link_to 'Edit Profile', '#edit-profile', class: 'btn btn-warning', data: {:toggle => 'modal'} %>
+  <%= link_to 'Delete Account', '#confirm-delete', class: 'btn btn-danger', data: {:toggle => 'modal'} %>
+  <% end %> 
+  </center>
+  <br>
 </div>
-</div>
-
-
-<!--
-Page will display user's
-Name (allow editing) - DONE
-Bio (allow editing and deleting) - DONE
-Profile pic - via cloudinary
-Books to Read (allowing removing)
-Books you've Read (allow removing)
-Favorite Books (allow removing)
-Clubs you're in (should auto-remove if user leaves a club)
-Button to Delete Account - DONE
-
--->
