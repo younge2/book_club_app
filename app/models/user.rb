@@ -11,12 +11,19 @@ class User < ActiveRecord::Base
   uniqueness: {case_sensitive: false},
   email: true
 
-  validates :password, presence: true, on: :create
+  validates :password,
+  length: {:minimum => 6, :maximum => 50}
+  
+  validates_confirmation_of :password, unless: :provider?
+  validates_presence_of :password, on: :create, unless: :provider?
 
-  has_secure_password
+  has_secure_password validations: false
+
+  def provider?
+    self.provider
+  end
 
   def self.authenticate email, password
     User.find_by_email(email).try(:authenticate, password)
   end
 end
-
