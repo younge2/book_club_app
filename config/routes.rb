@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root 'main#index'
   get 'about' => 'main#about'
 
@@ -30,6 +29,15 @@ Rails.application.routes.draw do
   get "login" => "sessions#new"
   post "login" => "sessions#create"
   delete "logout" => "sessions#destroy"
+
+  #password reset routes
+  get 'passwords/new'
+  get 'passwords/edit'
+  get 'reset' => 'passwords#new'
+  post 'reset' => 'passwords#create'
+  get 'reset/:code' => 'passwords#edit', as: :reset_code
+  put 'reset/:code' => 'passwords#update'
+
 
 
   get 'books/:id'  => 'books#show'
