@@ -33,6 +33,14 @@ $jumbotron-heading-font-size: 70px;
   padding:0;
 }
 
+.groupbanner {
+  width: 60%;
+}
+
+.centerit {
+  text-align: center;
+}
+
 /*.parallax {
   perspective: 300px;
   -webkit-perspective: 300px;
@@ -71,7 +79,7 @@ $jumbotron-heading-font-size: 70px;
   margin-top: 100px;
 }
 .heading2 {
-  margin-top: 100px;
+  margin-top: 200px;
 }
 
 #group1 {
@@ -79,9 +87,11 @@ $jumbotron-heading-font-size: 70px;
 }
 
 #group2 {
-  z-index: 3; 
+  z-index: 1; 
 }
-
+#group3 {
+  z-index: 4; 
+}
 
  /* Parallax base styles !!!! Borrowed from Url: http://keithclark.co.uk/articles/pure-css-parallax-websites/__;
   --------------------------------------------- */
@@ -116,7 +126,7 @@ $jumbotron-heading-font-size: 70px;
 .parallax__layer--fore {
   -webkit-transform: translateZ(90px) scale(.7);
   transform: translateZ(90px) scale(.7);
-  z-index: 1;
+  z-index: 3;
 }
 
 .parallax__layer--base {
@@ -128,7 +138,7 @@ $jumbotron-heading-font-size: 70px;
 .parallax__layer--back {
   -webkit-transform: translateZ(-300px) scale(2);
   transform: translateZ(-300px) scale(2);
-  z-index: 3;
+  z-index: 1;
 }
 
 .parallax__layer--deep {
