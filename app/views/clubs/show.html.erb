@@ -1,8 +1,7 @@
 <div class="container">
 	<div class="well">
-		<h1>My Book Club Page</h1>
-
-		<h3>Club Name: <%= @club.name %></h3>
+		
+		<h1>Club Name: <%= @club.name %></h1>
 
 		<p><%= @club.blurb %></p>
 
@@ -16,7 +15,11 @@
 		<% end %>
 
 		<br>
-
+		<h4>Books in Our Club</h4>
+		<% @club.books.each do |b| %>
+			<a href="<%= @club.id %>/book/<%= b.id %>/"><%= b.title %></a>
+		<% end %>
+		<br>
 		<% if @current_user.id == @club.owner %>
 
 			<%= link_to 'Delete Club', @club, method: :delete, class: 'btn btn-danger' %>

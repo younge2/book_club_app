@@ -23,6 +23,7 @@ class ClubsController < ApplicationController
   	@club = Club.find(params[:id])
     @user = User.find_by_id(@current_user.id)
     @club.users.find_by_id(@current_user)
+    
 
   end
   def update
