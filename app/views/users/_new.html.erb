@@ -1,7 +1,5 @@
-<div class="container">
-	<h2> Sign up for ReadMe here! </h2>
 
-	<%= bootstrap_form_for @user do |f| %>
+	<%= bootstrap_form_for :user, url: '/signup' do |f| %>
 	  <%= f.text_field :name %>
 
 	  <%= f.text_field :email %>
@@ -17,4 +15,4 @@
 
 	  <%= f.submit %>
 	<% end %>
-</div>
+
