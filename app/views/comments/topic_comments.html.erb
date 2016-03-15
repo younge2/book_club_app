@@ -8,9 +8,10 @@
 		<div class = "well post_well">
 			<p><%= comment.content %></p>
 			<p>~ <%= user.name%></p>
-			
-			<% if @curent_user && user.id == @current_user.id %>
+			<% if @current_user %>
+			<% if user.id == @current_user.id %>
 				<p class= "comment_edit"><%= link_to "Edit", edit_comment_path(@club, @book, @topic, comment), class: 'btn btn-warning' %></p>
+			<% end %>
 			<% end %>
 		</div>
 		<% end %>
