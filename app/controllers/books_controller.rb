@@ -87,9 +87,11 @@ class BooksController < ApplicationController
       redirect_to addbook_path
   end
   def delete
-    deletebook = Bookstate.where({user_id: @current_user.id, book_id: params[:id]}) do |book|
-      book.destory
-    end
+    bookstate = Bookstate.where(user_id: params[:id], book_id: params[:book_id]).first
+    bookstate_id = bookstate.id
+    Bookstate.delete(bookstate_id)
+    redirect_to "/users/profile/#{@current_user.id}"
+    
   end
 end
 

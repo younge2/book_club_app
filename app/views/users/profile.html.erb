@@ -32,7 +32,10 @@
               <a href="/books/<%= book.isbn%>"><img src ="<%=book.image%>"></a>
               <p><a href="/books/<%= book.isbn%>"><%= book.title %></a></p>
               <p>By: <%=book.author%></p>
-              <%= link_to 'Delete', bookdelete_path, class: 'btn btn-danger' %>
+              <%= form_tag(bookdelete_path, method: "delete") do %>
+                <%= hidden_field_tag(:book_id, book.id) %>
+                <%= submit_tag("Delete") %>
+              <% end %>
             </div>
           <% end %>
         <% end %>
@@ -55,7 +58,10 @@
               <a href="/books/<%= book.isbn%>"><img src ="<%=book.image%>"></a>
               <p><a href="/books/<%= book.isbn%>"><%= book.title %></a></p>
               <p>By: <%=book.author%></p>
-              <%= link_to 'Delete', bookdelete_path, class: 'btn btn-danger' %>
+              <%= form_tag(bookdelete_path, method: "delete") do %>
+                <%= hidden_field_tag(:book_id, book.id) %>
+                <%= submit_tag("Delete") %>
+              <% end %>
             </div>
           <% end %>
         <% end %>
@@ -77,7 +83,11 @@
             <div>
               <a href="/books/<%= book.isbn%>"><img src ="<%=book.image%>"></a>
               <p>By: <%=book.author%></p>
-              <%=link_to 'delete', {controller: 'books', action: 'delete'}, method: :delete, class: 'btn btn-warning' %>
+              <%= form_tag(bookdelete_path, method: "delete") do %>
+                <%= hidden_field_tag(:book_id, book.id) %>
+                <%= submit_tag("Delete") %>
+              <% end %>
+
             </div>
           <% end %>
         <% end %>
