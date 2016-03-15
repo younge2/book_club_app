@@ -1,0 +1,10 @@
+<div class="container">
+	<h4>Did you forget your password?</h4>
+
+	<%= bootstrap_form_tag url: reset_path do |f| %>
+		
+		<%= f.email_field :email  %>
+		<%= f.primary 'Reset Password' %>
+
+	<% end %>
+</div>
