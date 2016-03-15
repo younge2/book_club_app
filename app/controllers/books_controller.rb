@@ -19,7 +19,75 @@ class BooksController < ApplicationController
     #disables SSL for localhost, remove once deployed
     HTTParty::Basement.default_options.update(verify: false)
     @response = HTTParty.get(url)
+    @book = Book.new
   end
+
+  def new
+    @book = Book.new 
+  end
+
+  def create
+    book_new = Book.find_or_create_by(isbn: params[:books][:id]) do |book|
+      book.title = params[:books][:title]
+      book.author = params[:books][:author]
+      book.isbn = params[:books][:id]
+      book.yearofpub = params[:books][:date]
+      book.description = params[:books][:description]
+      book.image = params[:books][:image]
+      book.category = params[:books][:category]
+    end
+    bookassociation = Bookstate.find_or_create_by({user_id: @current_user.id, book_id: book_new.id}) do |bookstate|
+      bookstate.user_id = @current_user.id
+      bookstate.book_id = book_new.id
+      end
+      if params[:books][:label] == 'to-read'
+        bookassociation.category = 0
+      elsif params[:books][:label] == 'has read'
+        bookassociation.category = 1
+      elsif params[:books][:label] == 'favorite'
+        bookassociation.category = 2
+      end
+      bookassociation.save!
+
+
+    redirect_to root_path
+  end
+
+  def addbooktoclub
+    @clubs = @current_user.clubs.all
+    @book = Book.where(isbn: params[:id])
+    
+
+  end
+  def postbooktoclub
+    puts "is this working club"
+    @club = Club.find_by_id(params[:id])
+    @bookadd = Club.find_by_id(@club).books << Book.find_by_id(params[:book_id])
+    redirect_to club_path
+  end
+
+  def addbook
+    
+    @clubs = @current_user.clubs.all
+    book_new = Book.find_or_create_by(isbn: params[:books][:id]) do |book|
+      book.title = params[:books][:title]
+      book.author = params[:books][:author]
+      book.isbn = @isbn = params[:books][:id]
+      book.yearofpub = params[:books][:date]
+      book.description = params[:books][:description]
+      book.image = params[:books][:image]
+      book.category = params[:books][:category]
+    end
+    bookassociation = Bookstate.find_or_create_by({user_id: @current_user.id, book_id: book_new.id}) do |bookstate|
+      bookstate.user_id = @current_user.id
+      bookstate.book_id = book_new.id
+      end
+      
+      bookassociation.save!
+      #use put method on button
+      redirect_to addbook_path
+  end
+
 end
 
 

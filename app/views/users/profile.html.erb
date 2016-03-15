@@ -1,21 +1,75 @@
+<div class="container">
 <h1 class="profile-centered"><%= @user.name %></h1>
 <p class="lead profile-centered"><%= @user.bio %></p>
 
 
+<div>
+  <h3>
+    <% if @user.id == @current_user.id %>
+      Clubs You're In
+    <% end %>
+    <% if @user.id != @current_user.id%>
+      Clubs
+    <% end %>
+  </h3>
+    <% @user.clubs.each do |c| %>
+    <p><a href="/clubs/<%= c.id %>"><%= c.name %></p></a>
+    <% end %>
+</div>
+
+
+<div>
+  <h3>
+    <% if @user.id == @current_user.id %>
+      Your Favorite Books
+    <% end %>
+    <% if @user.id != @current_user.id%>
+      Favorite Books
+    <% end %>
+  </h3>
+</div>
+
+<div>
+  <h3>
+    <% if @user.id == @current_user.id %>
+      Your To-Read List
+    <% end %>
+    <% if @user.id != @current_user.id%>
+      To-Read List
+    <% end %>
+  </h3>
+</div>
+
+<div>
+  <h3>
+    <% if @user.id == @current_user.id %>
+      Books You've Read
+    <% end %>
+    <% if @user.id != @current_user.id%>
+      Finished Books
+    <% end %>
+  </h3>
+</div>
+
+<center>
 <% if @user.id == @current_user.id %>
 <%= link_to 'Edit Profile', edit_user_path, class: "btn btn-warning" %>
 <%= link_to 'Delete Account', @user, method: :delete, class: "btn btn-danger" %>
 <% end %> 
+</center>
+
+</div>
+
 
 <!--
 Page will display user's
 Name (allow editing) - DONE
 Bio (allow editing and deleting) - DONE
 Profile pic - via cloudinary
-Books to Read
-Books you've Read
-Favorite Books
-Clubs you're in
+Books to Read (allowing removing)
+Books you've Read (allow removing)
+Favorite Books (allow removing)
+Clubs you're in (should auto-remove if user leaves a club)
 Button to Delete Account - DONE
 
 -->

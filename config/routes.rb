@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   delete 'clubs/:club_id/book/:book_id/topic/:topic_id/edit/:comment_id', to: "comments#delete", as: :delete_comment
 
   get 'books'  => 'books#index'
+  get 'books/:id/addbook' => 'books#addbooktoclub', as: :addbook
+  post 'books/:id/addbook' => 'books#addbook', as: :posttoclub
+  put 'books/:id/' => 'books#addbook'
+  post 'books/:book_id/addbook/:id' => 'books#postbooktoclub', as: :postbooktoclub 
 
   
   #Local authentication routes
@@ -32,16 +36,19 @@ Rails.application.routes.draw do
 
 
   #User profiles
+
   get 'users/profile/:id' => 'users#profile', :as => 'user'
   get 'users/profile/:id/edit' => 'users#edit', :as => 'edit_user'
   patch 'users/profile/:id' => 'users#update'
   delete 'users/profile/:id' => 'users#destroy'
 
   get 'books/show'  => 'books#show'
-
+  post 'books' =>'books#create'
 
   resources :clubs
   get 'clubs/:id' => 'clubs#show'
+  put 'clubs/:id' => 'clubs#update'
+  delete 'clubs/:id/leave' => 'clubs#quit_club'
   # get 'clubs' => 'clubs#index'
   # get 'clubs/edit' =>'clubs#edit'
   # get 'clubs/new' => 'clubs#new'

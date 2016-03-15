@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311003837) do
+ActiveRecord::Schema.define(version: 20160314213204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,17 @@ ActiveRecord::Schema.define(version: 20160311003837) do
 
   add_index "books_users", ["book_id"], name: "index_books_users_on_book_id", using: :btree
   add_index "books_users", ["user_id"], name: "index_books_users_on_user_id", using: :btree
+
+  create_table "bookstates", force: :cascade do |t|
+    t.integer  "category"
+    t.integer  "book_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "bookstates", ["book_id"], name: "index_bookstates_on_book_id", using: :btree
+  add_index "bookstates", ["user_id"], name: "index_bookstates_on_user_id", using: :btree
 
   create_table "clubs", force: :cascade do |t|
     t.string   "name"
@@ -108,6 +119,8 @@ ActiveRecord::Schema.define(version: 20160311003837) do
   add_foreign_key "books_clubs", "clubs"
   add_foreign_key "books_users", "books"
   add_foreign_key "books_users", "users"
+  add_foreign_key "bookstates", "books"
+  add_foreign_key "bookstates", "users"
   add_foreign_key "clubs_users", "clubs"
   add_foreign_key "clubs_users", "users"
   add_foreign_key "comments", "topics"
