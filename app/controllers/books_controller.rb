@@ -48,10 +48,8 @@ class BooksController < ApplicationController
       elsif params[:books][:label] == 'favorite'
         bookassociation.category = 2
       end
-      bookassociation.save!
-
-
-    redirect_to root_path
+      bookassociation.save! 
+    redirect_to "/users/profile/#{@current_user.id}"
   end
 
   def addbooktoclub
