@@ -109,13 +109,14 @@
       <%= f.submit 'Add To BookClub', class: 'btn btn-pink' %>
     <% end %>
   <% end %>
-</div>
-<div class="well">
-  <p>Clubs reading this book </p>
-  <% book = @books.where(title: response['title']).first %>
-  <% book.clubs.each do |c| %>
-  <p><a href="/clubs/<%= c.id%> "><%= c.name %></a></p>
-  <%end %> 
 
+  <div class="well">
+    <p>Clubs reading this book </p>
+    <% book = @books.where(title: response['title']).first %>
+    <% book.clubs.each do |c| %>
+    <%= link_to c.name, club_path(c), class: 'btn btn-info' %>
+    <%end %> 
+
+  </div>
 </div>
 
