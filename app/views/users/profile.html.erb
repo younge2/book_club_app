@@ -2,7 +2,7 @@
 <h1 class="profile-centered"><%= @user.name %></h1>
 <p class="lead profile-centered"><%= @user.bio %></p>
 
-<div>
+<div class="well">
   <h3>
     <% if @user.id == @current_user.id %>
       Clubs You're In
@@ -12,12 +12,12 @@
     <% end %>
   </h3>
     <% @user.clubs.each do |c| %>
-    <p><a href="/clubs/<%= c.id %>"><%= c.name %></p></a>
+      <p><a href="/clubs/<%= c.id %>"><%= c.name %></p></a>
     <% end %>
 </div>
 
 
-<div>
+<div class="well">
   <h3>
     <% if @user.id == @current_user.id %>
       Your Favorite Books
@@ -29,13 +29,15 @@
     <% @books.each do |userbook| %>
       <% @allbooks.each do |book| %>
         <% if userbook.book_id == book.id && userbook.category == 2 %>
-          <p><%= book.title %></p>
+          <a href="/books/<%= book.isbn%>"><img src ="<%=book.image%>"></a>
+          <p><a href="/books/<%= book.isbn%>"><%= book.title %></a></p>
+          <p>By: <%=book.author%></p>
         <% end %>
       <% end %>
     <% end %>
 </div>
 
-<div>
+<div class="well">
   <h3>
     <% if @user.id == @current_user.id %>
       Your To-Read List
@@ -47,13 +49,15 @@
     <% @books.each do |userbook| %>
       <% @allbooks.each do |book| %>
         <% if userbook.book_id == book.id && userbook.category == 0 %>
-          <p><%= book.title %></p>
+          <a href="/books/<%= book.isbn%>"><img src ="<%=book.image%>"></a>
+          <p><a href="/books/<%= book.isbn%>"><%= book.title %></a></p>
+          <p>By: <%=book.author%></p>
         <% end %>
       <% end %>
     <% end %>
 </div>
 
-<div>
+<div class="well">
   <h3>
     <% if @user.id == @current_user.id %>
       Books You've Read
@@ -65,18 +69,14 @@
   <% @books.each do |userbook| %>
       <% @allbooks.each do |book| %>
         <% if userbook.book_id == book.id && userbook.category == 1 %>
-          <p><%= book.title %></p>
+          <a href="/books/<%= book.isbn%>"><img src ="<%=book.image%>"></a>
+          <p><a href="/books/<%= book.isbn%>"><%= book.title %></a></p>
+          <p>By: <%=book.author%></p>
         <% end %>
       <% end %>
     <% end %>
 </div>
 
-<center>
-<% if @user.id == @current_user.id %>
-<%= link_to 'Edit Profile', '#edit-profile', class: 'btn btn-warning', data: {:toggle => 'modal'} %>
-<%= link_to 'Delete Account', '#confirm-delete', class: 'btn btn-danger', data: {:toggle => 'modal'} %>
-<% end %> 
-</center>
 
 <div class="modal fade" id="edit-profile">
   <div class="modal-dialog">
@@ -106,4 +106,11 @@
     </div>
   </div>
 </div>
+
+<center>
+<% if @user.id == @current_user.id %>
+<%= link_to 'Edit Profile', '#edit-profile', class: 'btn btn-warning', data: {:toggle => 'modal'} %>
+<%= link_to 'Delete Account', '#confirm-delete', class: 'btn btn-danger', data: {:toggle => 'modal'} %>
+<% end %> 
+</center>
 </div>
