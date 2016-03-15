@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    Bookstates.where(user_id: @current_user.id).destroy
     @user = User.find(params[:id]).destroy
     flash[:success] = 'Account successfully deleted. Sorry to see you go!'
     redirect_to root_path
