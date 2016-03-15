@@ -1,0 +1,10 @@
+<h1>Add this book to the club</h1>
+
+<%= @book.first.id %>
+
+
+<% @clubs.each do |club| %>
+	<%= club.name %>
+
+	<%= link_to 'Add to Club', postbooktoclub_path(@book.first, club), method: :post, class: 'btn btn-info' %>
+<% end %>
