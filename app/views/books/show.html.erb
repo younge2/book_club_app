@@ -27,85 +27,86 @@
   <% else %>
   <% end %>
 </div>
-<div>
-<%= bootstrap_form_for :books, url: '/books' do |f| %>
-  <%= f.hidden_field :title, value: response['title'] %>
-  <%= f.hidden_field :author, value: response['authors'][0]%>
-  <%= f.hidden_field :id, value: @response["items"][0]['id']%>
-  <%= f.hidden_field :label, value: 'to-read'%>
-  <% if response.key?("publishedDate") %>
-    <%= f.hidden_field :date, value: response['publishedDate']%>
+<% if @user %>
+  <%= bootstrap_form_for :books, url: '/books' do |f| %>
+    <%= f.hidden_field :title, value: response['title'] %>
+    <%= f.hidden_field :author, value: response['authors'][0]%>
+    <%= f.hidden_field :id, value: @response["items"][0]['id']%>
+    <%= f.hidden_field :label, value: 'to-read'%>
+    <% if response.key?("publishedDate") %>
+      <%= f.hidden_field :date, value: response['publishedDate']%>
+    <% end %>
+    <% if response['imagelinks'] != {} %>
+      <%= f.hidden_field :image, value: response["imageLinks"]["thumbnail"]%>
+    <% end %>
+    <% if response.key?('description') %>
+      <%= f.hidden_field :description, value: response['description'] %>
+    <% end %>
+    <% if response.key?("categories") %>
+      <%= f.hidden_field :category, value: response['categories'][0] %>
+    <% end %>
+    <%= f.submit 'To Read', class: 'btn btn-primary' %>
   <% end %>
-  <% if response['imagelinks'] != {} %>
-    <%= f.hidden_field :image, value: response["imageLinks"]["thumbnail"]%>
-  <% end %>
-  <% if response.key?('description') %>
-    <%= f.hidden_field :description, value: response['description'] %>
-  <% end %>
-  <% if response.key?("categories") %>
-    <%= f.hidden_field :category, value: response['categories'][0] %>
-  <% end %>
-  <%= f.submit 'To Read', class: 'btn btn-primary' %>
-<% end %>
-</div><%= bootstrap_form_for :books, url: '/books' do |f| %>
-  <%= f.hidden_field :title, value: response['title'] %>
-  <%= f.hidden_field :author, value: response['authors'][0]%>
-  <%= f.hidden_field :id, value: @response["items"][0]['id']%>
-  <%= f.hidden_field :label, value: 'has read' %>
-  <% if response.key?("publishedDate") %>
-    <%= f.hidden_field :date, value: response['publishedDate']%>
-  <% end %>  
- <% if response['imagelinks'] != {} %>
-    <%= f.hidden_field :image, value: response["imageLinks"]["thumbnail"]%>
-  <% end %>
-  <% if response.key?('description') %>
-    <%= f.hidden_field :description, value: response['description'] %>
-  <% end %>
-  <% if response.key?("categories") %>
-    <%= f.hidden_field :category, value: response['categories'][0] %>
-  <% end %>
-  <%= f.submit 'Have Read', class: 'btn btn-primary' %>
-  <% end %>
-</div>
-<%= bootstrap_form_for :books, url: '/books' do |f| %>
-  <%= f.hidden_field :title, value: response['title'] %>
-  <%= f.hidden_field :author, value: response['authors'][0]%>
-  <%= f.hidden_field :id, value: @response["items"][0]['id']%>
-  <%= f.hidden_field :label, value: 'favorite'%>
-  <% if response.key?("publishedDate") %>
-    <%= f.hidden_field :date, value: response['publishedDate']%>
-  <% end %>
- <% if response['imagelinks'] != {} %>
-    <%= f.hidden_field :image, value: response["imageLinks"]["thumbnail"]%>
-  <% end %>
-  <% if response.key?('description') %>
-    <%= f.hidden_field :description, value: response['description'] %>
-  <% end %>
-  <% if response.key?("categories") %>
-    <%= f.hidden_field :category, value: response['categories'][0] %>
-  <% end %>
-  <%= f.submit 'Favorite', class: 'btn btn-primary' %>
-<% end %>
-</div>
 
-<%= bootstrap_form_for :books, url: posttoclub_path do |f| %>
-  <%= f.hidden_field :title, value: response['title'] %>
-  <%= f.hidden_field :author, value: response['authors'][0]%>
-  <%= f.hidden_field :id, value: @response["items"][0]['id']%>
-  <%= f.hidden_field :label, value: 'favorite'%>
-  <% if response.key?("publishedDate") %>
-    <%= f.hidden_field :date, value: response['publishedDate']%>
+    <%= bootstrap_form_for :books, url: '/books' do |f| %>
+    <%= f.hidden_field :title, value: response['title'] %>
+    <%= f.hidden_field :author, value: response['authors'][0]%>
+    <%= f.hidden_field :id, value: @response["items"][0]['id']%>
+    <%= f.hidden_field :label, value: 'has read' %>
+    <% if response.key?("publishedDate") %>
+      <%= f.hidden_field :date, value: response['publishedDate']%>
+    <% end %>  
+   <% if response['imagelinks'] != {} %>
+      <%= f.hidden_field :image, value: response["imageLinks"]["thumbnail"]%>
+    <% end %>
+    <% if response.key?('description') %>
+      <%= f.hidden_field :description, value: response['description'] %>
+    <% end %>
+    <% if response.key?("categories") %>
+      <%= f.hidden_field :category, value: response['categories'][0] %>
+    <% end %>
+    <%= f.submit 'Have Read', class: 'btn btn-primary' %>
+    <% end %>
+
+    <%= bootstrap_form_for :books, url: '/books' do |f| %>
+    <%= f.hidden_field :title, value: response['title'] %>
+    <%= f.hidden_field :author, value: response['authors'][0]%>
+    <%= f.hidden_field :id, value: @response["items"][0]['id']%>
+    <%= f.hidden_field :label, value: 'favorite'%>
+    <% if response.key?("publishedDate") %>
+      <%= f.hidden_field :date, value: response['publishedDate']%>
+    <% end %>
+   <% if response['imagelinks'] != {} %>
+      <%= f.hidden_field :image, value: response["imageLinks"]["thumbnail"]%>
+    <% end %>
+    <% if response.key?('description') %>
+      <%= f.hidden_field :description, value: response['description'] %>
+    <% end %>
+    <% if response.key?("categories") %>
+      <%= f.hidden_field :category, value: response['categories'][0] %>
+    <% end %>
+    <%= f.submit 'Favorite', class: 'btn btn-primary' %>
   <% end %>
- <% if response['imagelinks'] != {} %>
-    <%= f.hidden_field :image, value: response["imageLinks"]["thumbnail"]%>
+
+    <%= bootstrap_form_for :books, url: posttoclub_path do |f| %>
+    <%= f.hidden_field :title, value: response['title'] %>
+    <%= f.hidden_field :author, value: response['authors'][0]%>
+    <%= f.hidden_field :id, value: @response["items"][0]['id']%>
+    <%= f.hidden_field :label, value: 'favorite'%>
+    <% if response.key?("publishedDate") %>
+      <%= f.hidden_field :date, value: response['publishedDate']%>
+    <% end %>
+   <% if response['imagelinks'] != {} %>
+      <%= f.hidden_field :image, value: response["imageLinks"]["thumbnail"]%>
+    <% end %>
+    <% if response.key?('description') %>
+      <%= f.hidden_field :description, value: response['description'] %>
+    <% end %>
+    <% if response.key?("categories") %>
+      <%= f.hidden_field :category, value: response['categories'][0] %>
+    <% end %>
+    <%= f.submit 'Add To BookClub', class: 'btn btn-primary' %>
   <% end %>
-  <% if response.key?('description') %>
-    <%= f.hidden_field :description, value: response['description'] %>
-  <% end %>
-  <% if response.key?("categories") %>
-    <%= f.hidden_field :category, value: response['categories'][0] %>
-  <% end %>
-  <%= f.submit 'Add To BookClub', class: 'btn btn-primary' %>
 <% end %>
 
 

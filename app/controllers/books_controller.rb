@@ -20,6 +20,7 @@ class BooksController < ApplicationController
     HTTParty::Basement.default_options.update(verify: false)
     @response = HTTParty.get(url)
     @book = Book.new
+    @user = @current_user
   end
 
   def new
