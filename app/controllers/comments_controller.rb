@@ -21,6 +21,26 @@ class CommentsController < ApplicationController
 
 	end
 
+	def edit
+		@club = Club.find(params[:club_id])
+		@book = Book.find(params[:book_id])
+		@topic = Topic.find(params[:topic_id])
+		@comment = Comment.find_by_id(params[:comment_id])
+	end
+
+	def change
+		@comment = Comment.find_by_id(params[:comment_id])
+		@comment.update(comment_params)
+		redirect_to all_comments_path
+	end
+
+	def delete
+		@comment = Comment.find_by_id(params[:comment_id])
+		@comment.destroy
+		redirect_to all_comments_path
+	end
+
+
 
 	def comment_params
   	params.require(:comment).permit(:content)
