@@ -22,7 +22,7 @@
 		<h4>Books in Our Club</h4>
 		<ul>
 		<div><% @club.books.each do |b| %>
-			<li class="listobooks"><a class="booklist" href="<%= @club.id %>/book/<%= b.id %>/"> <%= b.title %> </a></li>
+			<li class="listobooks"><a class="booklist" href="/clubs/<%= @club.id %>/book/<%= b.id %>/"> <%= b.title %> </a></li>
 		<% end %></div></ul>
 		<br>
 		<% if @current_user.id == @club.owner %>
