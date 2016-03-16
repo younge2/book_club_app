@@ -40,6 +40,14 @@ $btn-success-bg: #7EC2AA;
 /*body, html {
   overflow: hidden;
 }*/
+
+ul.books {
+  text-align: center;
+}
+li.listobooks {
+  display: inline-block;
+  margin-top: 12px;
+}
 .author {
   font-size: 8px;
 }
@@ -66,7 +74,7 @@ $btn-success-bg: #7EC2AA;
   background-color: #4CA8A1;
   border-radius: 20px;
   padding: 5px;
-  margin: 2px;
+  margin: 5px;
 }
 
 * {

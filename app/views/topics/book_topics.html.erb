@@ -7,7 +7,7 @@
 			<div class="well post_well">
 				<p><a class="topic_link" href = "/clubs/<%= @club.id %>/book/<%= @book.id%>/topic/<%= topic.id%>/"><small>Topic: </small><%= topic.title %></a></p>
 				<% user= @users.where(id: topic.author).first %>
-				<p>Create by: <%= user.name %></p>
+				<p><small>started by <%= user.name %></small></p>
 			</div>
 		<% end %>
 
