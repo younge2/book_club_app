@@ -1,18 +1,21 @@
 <div class="container">
 	<div class="well">
-
 		<h1><i>Join a Book Club!</i></h1>
-
-
-		<% @clubs.each do |club| %>
-
-			<h3><%= link_to club.name, :controller => "clubs", :action => "show", :id => club.id %></h3>
-			<p><i>about us:</i> <%= club.blurb %></p>
-			
-
-
-
+		  <% @clubs.each do |club| %>
+        <% if @current_user %>
+			   <h3><%= link_to club.name, :controller => "clubs", :action => "show", :id => club.id %></h3>
+			   <p><%= club.blurb %></p>
+        <% end %>
+        <% if !@current_user %>
+          <h3><%= club.name %></h3>
+          <p><%= club.blurb %></p>
+        <% end %>
 		<% end %>
 	</div>
+  <% if !@current_user %>
+    <p class="lead">Feeling left out? Start or join a book club!<br>
+    <%=link_to "Login", '#login', data: {:toggle => 'modal'}, class: "btn btn-success" %>
+    <%= link_to 'Signup', '#signup', data: {:toggle => 'modal'}, class: "btn btn-danger" %>
+  <% end %>
 </div>
 
