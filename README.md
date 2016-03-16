@@ -23,3 +23,6 @@ Digitizing the bookclub experience by providing a space for online discusssion o
  
 ##Resources
 Wireframes, user stories, and ERD can be viewed [here](https://drive.google.com/folderview?id=0ByqpW8b0agwFOFZ1VTBlZHNIMzg&usp=sharing).
+
+##Known Issues
+* If two clubs have same book, the topics are the same in both clubs.
