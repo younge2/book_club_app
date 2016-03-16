@@ -1,0 +1,4 @@
+<%= bootstrap_form_for @user, url: "/users/uploadphoto", method: "patch" do |f| %>
+    <%= f.file_field :profilePic %>
+    <%= f.submit :class => "btn btn-primary" %>
+<% end %>

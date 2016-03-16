@@ -12,10 +12,10 @@ class User < ActiveRecord::Base
   email: true
 
 
-  validates :password, unless: :provider?,
+  validates :password, on: :create, unless: :provider?,
   length: {:minimum => 6, :maximum => 50}
   
-  validates_confirmation_of :password, unless: :provider?
+  validates_confirmation_of :password, on: :create, unless: :provider?
   validates_presence_of :password, on: :create, unless: :provider?
 
   has_secure_password validations: false

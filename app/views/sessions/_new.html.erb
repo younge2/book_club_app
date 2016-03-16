@@ -6,6 +6,11 @@
   <%= f.submit 'Login' %> 
 
 <% end %>
+<br>
+<p class="lead">Don't have an account?</p> 
+<br>
+<%= link_to 'Signup Now!', '#signup', data: {:toggle => 'modal'}, class: "btn btn-danger" %> OR
+<%= link_to "Login with Facebook", "/auth/facebook", class: "btn btn-primary" %>
 
 
 

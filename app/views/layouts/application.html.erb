@@ -36,7 +36,7 @@
           <li><%= link_to "Start a Club", "/clubs/new" %></li>
         <% end %>
          <% if !@current_user %>
-          <li><%= link_to "Start a Club", login_path %></li>
+          <li><%= link_to "Start a Club", '#login', data: {:toggle => 'modal'} %></li>
         <% end %>
         <% if @current_user %>
           <li><%= link_to "Your Profile", :controller => "users", :action => "profile", :id => @current_user.id %></li>

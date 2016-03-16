@@ -50,6 +50,7 @@ Rails.application.routes.draw do
   get 'users/profile/:id/edit' => 'users#edit', :as => 'edit_user'
   patch 'users/profile/:id' => 'users#update'
   delete 'users/profile/:id' => 'users#destroy'
+  patch 'users/uploadphoto' =>'users#upload_photo'
 
   get 'books/show'  => 'books#show'
   post 'books' =>'books#create'
