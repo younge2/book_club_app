@@ -33,3 +33,5 @@ Wireframes, user stories, and ERD can be viewed [here](https://drive.google.com/
 * Add notifications to users if someone comments on topic or book
 * Search results in horizontal list.
 * Add replies to comments
+* Add book to bookclub that you're a member of but not admin
+
