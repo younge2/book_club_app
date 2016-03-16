@@ -1,0 +1,20 @@
+
+	<%= bootstrap_form_for :user, url: '/signup' do |f| %>
+	  <%= f.text_field :name %>
+
+	  <%= f.text_field :email %>
+
+	  <%= f.label "Tell us a little about yourself (optional)" %>
+	  <%= f.text_area :bio %>
+
+  	<%=f.label "Your password must be at least six characters long" %>
+  	<%= f.password_field :password%>
+
+
+	  <%= f.password_field :password_confirmation %>
+
+	  <%= f.hidden_field :profilePic, value: 'zu5uk6pqxrktalv6coi2' %>
+
+	  <%= f.submit %>
+	<% end %>
+

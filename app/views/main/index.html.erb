@@ -8,8 +8,8 @@
         <div class="container">  
           <h1>ReadMe</h1>
           <h4>a place for book lovers to get together and talk about books</h4>
-          <%=link_to "Login", login_path, class: "btn btn-success" %>
-          <%=link_to "Sign Up", signup_path, class: "btn btn-danger" %>
+          <%=link_to "Login", '#login', data: {:toggle => 'modal'}, class: "btn btn-success" %>
+          <%= link_to 'Signup', '#signup', data: {:toggle => 'modal'}, class: "btn btn-danger" %>
           <%= link_to "Login with Facebook", "/auth/facebook", class: "btn btn-primary" %>
           <% if @current_user %>
             <%= link_to "Logout", auth_logout_path, class: "btn btn-warning" %>
@@ -61,7 +61,7 @@
             </div>    
             <div class="col-md-3">  
               <h4>Michael Hurley</h4>
-              <p>Michael is a Seattle-based web developer who is passionate about creating visually stunning and functional solutions to user problems. When he's not coding, you can find him trying to make people laugh, snapping photos, or awkwardly dancing at indie rock concerts.</p>
+              <p>Michael is a Seattle-based web developer. When he's not coding, you can find him trying to make people laugh, snapping photos, or awkwardly dancing at indie rock concerts.</p>
             </div>  
           </div>
         </div>  
