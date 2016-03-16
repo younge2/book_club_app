@@ -1,3 +1,4 @@
+<div class="container">
 	<div class= "topic_header page-header">
 		
 		<h3><a href="/clubs/<%= @club.id%>"><%= @club.name%></a></h3>
@@ -6,11 +7,11 @@
 	<% @arr.each do |comment, user| %>
 		<% if user %>
 		<div class = "well post_well">
-			<p><%= comment.content %></p>
-			<p>~ <%= user.name%></p>
+			<small><p class="commenting"><%= comment.content %></p></small>
+			<small><p class="author">~ <%= user.name%></p></small>
 			<% if @current_user %>
 			<% if user.id == @current_user.id %>
-				<p class= "comment_edit"><%= link_to "Edit", edit_comment_path(@club, @book, @topic, comment), class: 'btn btn-warning' %></p>
+				<p class= "comment_edit"><%= link_to "Edit", edit_comment_path(@club, @book, @topic, comment), class: 'btn btn-warning btn-xs' %></p>
 			<% end %>
 			<% end %>
 		</div>
@@ -29,3 +30,4 @@
 	<% end %>
 	</div>
 	<% end %>
+</div>

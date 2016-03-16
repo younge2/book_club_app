@@ -1,6 +1,7 @@
-<h1>Create a New Book Club</h1>
+
 
 <div class="container">
+<h1>Start your own Book Club!</h1>
 <%= bootstrap_form_for @club do |f| %>
 
 	<%= f.text_field :name, icon: "pencil" %>
@@ -12,5 +13,7 @@
 	<%= f.primary %>
 <% end %>
 </div>
+<%= image_tag("stackedbooks.png", class: "stacked") %>
+
 
 
