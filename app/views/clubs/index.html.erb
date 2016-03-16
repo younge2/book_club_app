@@ -1,5 +1,10 @@
 <div class="container">
-	<div class="well">
+  <% if !@current_user %>
+    <p class="lead">Feeling left out? Login to click on a book club and view the topics!<br>
+    <%=link_to "Login", '#login', data: {:toggle => 'modal'}, class: "btn btn-success" %>
+    <%= link_to 'Signup', '#signup', data: {:toggle => 'modal'}, class: "btn btn-danger" %>
+  <% end %>
+  <div class="well">
 		<h1><i>Join a Book Club!</i></h1>
 		  <% @clubs.each do |club| %>
         <% if @current_user %>
@@ -11,11 +16,18 @@
           <p><%= club.blurb %></p>
         <% end %>
 		<% end %>
+
+		<div class="row">
+			<div class="col-md-6">
+				<% @clubs.each do |club| %>
+
+					<h3><%= link_to club.name, :controller => "clubs", :action => "show", :id => club.id %></h3>
+					<p><i>about us:</i> <%= club.blurb %></p>			
+				<% end %></div>
+			<div class="col-md-6"><%= image_tag("indaclub.jpg", width: "400", class: "picture") %></div>
+		</div>
+
 	</div>
-  <% if !@current_user %>
-    <p class="lead">Feeling left out? Start or join a book club!<br>
-    <%=link_to "Login", '#login', data: {:toggle => 'modal'}, class: "btn btn-success" %>
-    <%= link_to 'Signup', '#signup', data: {:toggle => 'modal'}, class: "btn btn-danger" %>
-  <% end %>
+
 </div>
 

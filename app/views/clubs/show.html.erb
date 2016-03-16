@@ -16,9 +16,9 @@
 
 		<br>
 		<h4>Books in Our Club</h4>
-		<% @club.books.each do |b| %>
-			<a href="<%= @club.id %>/book/<%= b.id %>/">| <%= b.title %> |</a>
-		<% end %>
+		<div><% @club.books.each do |b| %>
+			<a class="booklist" href="<%= @club.id %>/book/<%= b.id %>/"> <%= b.title %> </a>
+		<% end %></div>
 		<br>
 		<% if @current_user.id == @club.owner %>
 

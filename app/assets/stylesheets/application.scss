@@ -26,6 +26,12 @@ $navbar-default-color: #4CA8A1;
 $navbar-default-link-color: #4CA8A1;
 $text-color: #4CA8A1;
 $link-color: #4CA8A1;
+$btn-warning-color: white;
+$btn-warning-bg: #BCC747;
+$btn-danger-color: white;
+$btn-danger-bg: #A92159;
+$btn-success-color: white;
+$btn-success-bg: #7EC2AA;
 
 
 @import "bootstrap-sprockets";
@@ -34,12 +40,33 @@ $link-color: #4CA8A1;
 /*body, html {
   overflow: hidden;
 }*/
+.author {
+  font-size: 8px;
+}
+.commenting {
+  font-size: 12px;
+}
 
+.picture {
+  border-radius: 10px;
+}
+.stacked {
+  width: 100%;
+  margin-top: 20px;
+}
 .well {
   @include gradient-vertical($start-color: darken($well-bg, 8%), $end-color: $well-bg);
   border-color: darken($well-bg, 15%);
   $shadow: inset 0 1px 5px rgba(0,0,0,.05), 0 1px 0 rgba(255,255,255,.1);
   @include box-shadow($shadow);
+}
+.booklist {
+  font-size: 16px;
+  color: white;
+  background-color: #4CA8A1;
+  border-radius: 20px;
+  padding: 5px;
+  margin: 2px;
 }
 
 * {
