@@ -26,3 +26,10 @@ Wireframes, user stories, and ERD can be viewed [here](https://drive.google.com/
 
 ##Known Issues
 * If two clubs have same book, the topics are the same in both clubs.
+
+##Things to add
+* Remove books from book clubs
+* Chat room
+* Add notifications to users if someone comments on topic or book
+* Search results in horizontal list.
+* Add replies to comments
