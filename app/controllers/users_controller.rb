@@ -45,7 +45,7 @@ class UsersController < ApplicationController
     # @current_user.save
     @current_user.update({:profilePic => cloudinary_file["public_id"]})
     # redirect_to user_path
-    redirect_to root_path
+    redirect_to "/users/profile/#{@current_user.id}"
   end
 
 
