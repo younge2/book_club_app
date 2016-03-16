@@ -2,6 +2,15 @@
   <h1 class="profile-centered"><%= @user.name %></h1>
   <p class="lead profile-centered"><%= @user.bio %></p>
 
+<center><%= cl_image_tag(@user.profilePic,
+      :width => 200, :height => 200,
+      :crop => :fill, :gravity => :face)
+      %><br>
+      <br>
+ <%= link_to 'Upload Profile Photo', '#upload-pic', class: 'btn btn-primary', data: {:toggle => 'modal'} %> 
+</center>
+<br>
+
   <div class="well">
     <h3>
       <% if @user.id == @current_user.id %>
@@ -15,7 +24,9 @@
         <p><a href="/clubs/<%= c.id %>"><%= c.name %></a></p>
       <% end %>
   </div>
-
+  <div class="text-center">
+    <h3>To add books to favorites, to-read, or have read, search in the navigation bar above.</h3>
+  </div>
   <div class="well">
     <h3>
       <% if @user.id == @current_user.id %>
@@ -118,6 +129,20 @@
         </div>
         <div class="modal-body">
           <%= render 'users/confirmdelete' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="modal fade" id="upload-pic">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Upload a Profile Photo</h4>
+        </div>
+        <div class="modal-body">
+          <%= render 'users/uploadphoto' %>
         </div>
       </div>
     </div>

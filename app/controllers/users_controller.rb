@@ -27,14 +27,27 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = User.find(params[:id])
-    if user.update(user_params)
-      user.update(user_params)
+    @user = User.find(params[:id])
+    if @user
+      @user.update(user_params)
       redirect_to user_path 
     else
       render 'edit'
     end
   end
+
+  def upload_photo
+    picture_path = params[:user][:profilePic].path
+    cloudinary_file = Cloudinary::Uploader.upload(picture_path)
+    # @current_user.profilePic = cloudinary_file["public_id"]
+    # user = User.find(@current_user.id)
+    # @current_user.profilePic = photo_id
+    # @current_user.save
+    @current_user.update({:profilePic => cloudinary_file["public_id"]})
+    # redirect_to user_path
+    redirect_to "/users/profile/#{@current_user.id}"
+  end
+
 
   def destroy
     @user = User.find(params[:id]).destroy
