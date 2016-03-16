@@ -1,6 +1,6 @@
 == README
 
-Readme is a Ruby on Rails app built by [Ella Erickson](https://github.com/ellazee) [Rachel Hanna](https://github.com/Nepios) [Michael Hurley](https://github.com/michaelscotthurley), and [Ethan Young]https://github.com/younge2).
+Readme is a Ruby on Rails app built by [Ella Erickson](https://github.com/ellazee), [Rachel Hanna](https://github.com/Nepios), [Michael Hurley](https://github.com/michaelscotthurley), and [Ethan Young](https://github.com/younge2).
 
 Things you may want to cover:
 
