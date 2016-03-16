@@ -28,6 +28,7 @@
     <% else %>
     <% end %>
   </div>
+  <div class="row">
   <% if @user %>
     <%= bootstrap_form_for :books, url: '/books' do |f| %>
       <%= f.hidden_field :title, value: response['title'] %>
@@ -108,14 +109,14 @@
       <% end %>
       <%= f.submit 'Add To BookClub', class: 'btn btn-pink' %>
     <% end %>
-</div>
+    </div>
 <div class="well">
   <p>Clubs reading this book </p>
   <% if @books.where(title: response['title']) %>
     <% book = @books.where(title: response['title']).first %>
     <% if book && book.clubs %>
     <% book.clubs.each do |c| %>
-    <p><a href="/clubs/<%= c.id%> "><%= c.name %></a></p>
+    <p><a href="/clubs/<%= c.id%> " class="btn btn-info"><%= c.name %></a></p>
     <%end %> 
   <% end %>
   <% end %>
@@ -123,5 +124,4 @@
 
 
   </div>
-
-
+</div>
