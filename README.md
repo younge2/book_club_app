@@ -22,4 +22,4 @@ Digitizing the bookclub experience by providing a space for online discusssion o
 * Oauth
  
 ##Resources
-Wireframes, user stories, and ERD can be viewed [here](https://drive.google.com/drive/u/0/folders/0ByqpW8b0agwFOFZ1VTBlZHNIMzg).
+Wireframes, user stories, and ERD can be viewed [here](https://drive.google.com/folderview?id=0ByqpW8b0agwFOFZ1VTBlZHNIMzg&usp=sharing).
