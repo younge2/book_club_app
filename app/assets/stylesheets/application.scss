@@ -20,6 +20,13 @@ $jumbotron-bg: white;
 $jumbotron-heading-color: inherit !default;
 $jumbotron-font-size: 32px;
 $jumbotron-heading-font-size: 70px;
+$well-bg: white;
+$navbar-default-bg: white;
+$navbar-default-color: salmon;
+$navbar-default-link-color: salmon;
+$text-color: salmon;
+$link-color: salmon;
+
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -27,6 +34,13 @@ $jumbotron-heading-font-size: 70px;
 /*body, html {
   overflow: hidden;
 }*/
+
+.well {
+  @include gradient-vertical($start-color: darken($well-bg, 8%), $end-color: $well-bg);
+  border-color: darken($well-bg, 15%);
+  $shadow: inset 0 1px 5px rgba(0,0,0,.05), 0 1px 0 rgba(255,255,255,.1);
+  @include box-shadow($shadow);
+}
 
 * {
   margin:0;

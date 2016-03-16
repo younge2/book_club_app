@@ -1,10 +1,10 @@
 <div class= "topic_header page-header">
-	<h1>Topics</h1>
-	<h1><%= @club.name%> <small><%= @book.title%> </small></h1>
+	<h2><small>Discussions about</small> <%= @book.title%> <small>in <%= @club.name%></small> </h2>
+	
 </div>
 		<% @topics.each do |topic| %>
 			<div class="well post_well">
-				<p><a class="topic_link" href = "./topic/<%= topic.id%>/"><%= topic.title %></a></p>
+				<p><a class="topic_link" href = "/clubs/<%= @club.id %>/book/<%= @book.id%>/topic/<%= topic.id%>/"><small>Topic: </small><%= topic.title %></a></p>
 			</div>
 		<% end %>
 
