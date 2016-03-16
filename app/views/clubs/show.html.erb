@@ -1,9 +1,9 @@
 <div class="container">
 	<div class="well">
 		
-		<h1>Club Name: <%= @club.name %></h1>
+		<h1><%= @club.name %></h1>
 
-		<p><%= @club.blurb %></p>
+		<p><i>about us: </i><%= @club.blurb %></p>
 
 
 		<h5>Club Members:</h5>
@@ -17,7 +17,7 @@
 		<br>
 		<h4>Books in Our Club</h4>
 		<% @club.books.each do |b| %>
-			<a href="<%= @club.id %>/book/<%= b.id %>/"><%= b.title %></a>
+			<a href="<%= @club.id %>/book/<%= b.id %>/">| <%= b.title %> |</a>
 		<% end %>
 		<br>
 		<% if @current_user.id == @club.owner %>
