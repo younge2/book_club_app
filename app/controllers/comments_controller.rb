@@ -13,10 +13,12 @@ class CommentsController < ApplicationController
 	end
 
 	def create
-		@topic = Topic.find(params[:topic_id])
+		@topic = Topic.find_by_id(params[:topic_id])
 		com = @topic.comments.create(comment_params)
 		com.author = @current_user.id
 		com.save
+		@topic.count += 1
+		@topic.save
 		redirect_to all_comments_path
 
 	end
@@ -36,6 +38,8 @@ class CommentsController < ApplicationController
 
 	def delete
 		@comment = Comment.find_by_id(params[:comment_id])
+		@topic = Topic.find_by_id(params[:topic_id])
+		@topic.count -= 1
 		@comment.destroy
 		redirect_to all_comments_path
 	end

@@ -1,5 +1,12 @@
 <div class= "topic_header page-header">
 	<h2><small>Discussions about</small> <%= @book.title%> <small>in <%= @club.name%></small> </h2>
+
+	<div>
+	<%= link_to "Sort by Popularity", some_topics_path(:sort => "Popularity"), class: 'btn btn-success' %>
+	<%= link_to "Sort by Recent", some_topics_path(:sort => "Recent"), class: 'btn btn-success' %>
+	<%= link_to "Sort by Creation date", some_topics_path(:sort => "Create"), class: 'btn btn-success' %>
+	
+	</div>
 	
 </div>
 		<% @topics.each do |topic| %>
