@@ -1,7 +1,7 @@
 	<div class= "topic_header page-header">
 		
 		<h3><a href="/clubs/<%= @club.id%>"><%= @club.name%></a></h3>
-		<h2><%= @topic.title %> <small> discussion thread for <a href="/clubs/<%= @club.id%>/book/<%= @book.id %>"><%= @book.title%></small></a></h2>
+		<h2><%= @topic.title %><small> discussion thread for <a href="/clubs/<%= @club.id%>/book/<%= @book.id %>"><%= @book.title%></small></a></h2>
 	</div>
 	<% @arr.each do |comment, user| %>
 		<% if user %>

@@ -4,6 +4,7 @@ class TopicsController < ApplicationController
 		@club = Club.find(params[:club_id])
 		@book = Book.find(params[:book_id])
 		@topics = Topic.where(book_id: @book.id)
+		@users = User.all
 
 	end
 
