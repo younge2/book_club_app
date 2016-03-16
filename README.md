@@ -20,3 +20,6 @@ Digitizing the bookclub experience by providing a space for online discusssion o
 * SASS
 * HTTParty
 * Oauth
+ 
+##Resources
+Wireframes, user stories, and ERD can be viewed [here](https://drive.google.com/drive/u/0/folders/0ByqpW8b0agwFOFZ1VTBlZHNIMzg).
