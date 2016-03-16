@@ -1,6 +1,6 @@
 <div class="container">
 <div class= "topic_header page-header">
-	<h2><small>Discussions about</small> <%= @book.title%> <small>in <%= @club.name%></small> </h2>
+	<h2><small>Discussions about</small> <%= @book.title%> <small>in <a href="/clubs/<%= @club.id%>/"> <%= @club.name%></small></a> </h2>
 	
 </div>
 		<% @topics.each do |topic| %>
